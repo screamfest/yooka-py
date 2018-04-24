@@ -1,1 +1,1 @@
-web: python yooka.py
+web: python app.py
