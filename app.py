@@ -1,8 +1,12 @@
-# encoding: utf-8
-from flask import Flask, request, abort
+from __future__ import unicode_literals
 
+import os
+import sys
+from argparse import ArgumentParser
+
+from flask import Flask, request, abort
 from linebot import (
-    LineBotApi, WebhookHandler
+    LineBotApi, WebhookParser
 )
 from linebot.exceptions import (
     InvalidSignatureError
@@ -13,35 +17,55 @@ from linebot.models import (
 
 app = Flask(__name__)
 
-line_bot_api = LineBotApi('er/9E+FlryNsGoGT+Rj2Rex5psACBaeJy0u6hYZ6KjFP8pbT2Fjef0KLSJAZBOW3CHtj/R71zRtxJBXEPbpx5VyPsQMfVhf2lftDAON5ROCufNk/S85b0UsTgm8OZ9ylwWh6acsMjsUFxqbpO67BJwdB04t89/1O/w1cDnyilFU=') #Your Channel Access Token
-handler = WebhookHandler('7426f045e38ab7ad11f4b171f1ff0e42') #Your Channel Secret
+# get channel_secret and channel_access_token from your environment variable
+channel_secret = os.getenv('7426f045e38ab7ad11f4b171f1ff0e42', None)
+channel_access_token = os.getenv('er/9E+FlryNsGoGT+Rj2Rex5psACBaeJy0u6hYZ6KjFP8pbT2Fjef0KLSJAZBOW3CHtj/R71zRtxJBXEPbpx5VyPsQMfVhf2lftDAON5ROCufNk/S85b0UsTgm8OZ9ylwWh6acsMjsUFxqbpO67BJwdB04t89/1O/w1cDnyilFU=', None)
+if channel_secret is None:
+    print('Specify LINE_CHANNEL_SECRET as environment variable.')
+    sys.exit(1)
+if channel_access_token is None:
+    print('Specify LINE_CHANNEL_ACCESS_TOKEN as environment variable.')
+    sys.exit(1)
+
+line_bot_api = LineBotApi(channel_access_token)
+parser = WebhookParser(channel_secret)
+
 
 @app.route("/callback", methods=['POST'])
 def callback():
-    # get X-Line-Signature header value
     signature = request.headers['X-Line-Signature']
 
     # get request body as text
     body = request.get_data(as_text=True)
     app.logger.info("Request body: " + body)
 
-    # handle webhook body
+    # parse webhook body
     try:
-        handler.handle(body, signature)
+        events = parser.parse(body, signature)
     except InvalidSignatureError:
         abort(400)
 
+    # if event is MessageEvent and message is TextMessage, then echo text
+    for event in events:
+        if not isinstance(event, MessageEvent):
+            continue
+        if not isinstance(event.message, TextMessage):
+            continue
+
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=event.message.text)
+        )
+
     return 'OK'
 
-@handler.add(MessageEvent, message=TextMessage)
-def handle_text_message(event):
-    #text = event.message.text #message from user
 
-    line_bot_api.reply_message(
-        event.reply_token,
-        TextSendMessage(text=even.message.text)) #reply the same message from user
-    
-
-import os
 if __name__ == "__main__":
-    app.run()
+    arg_parser = ArgumentParser(
+        usage='Usage: python ' + __file__ + ' [--port <port>] [--help]'
+    )
+    arg_parser.add_argument('-p', '--port', type=int, default=8000, help='port')
+    arg_parser.add_argument('-d', '--debug', default=False, help='debug')
+    options = arg_parser.parse_args()
+
+    app.run(debug=options.debug, port=options.port)
