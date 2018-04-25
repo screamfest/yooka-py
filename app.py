@@ -13,12 +13,9 @@ from linebot.models import (
 
 app = Flask(__name__)
 
-line_bot_api = LineBotApi('DWuMGd04tRmRhlAzOnY++fWTy4pud23Ht0tphKJa3a1jddJMRYkrg6wYJkc/0x3vCHtj/R71zRtxJBXEPbpx5VyPsQMfVhf2lftDAON5RODKtsC+PZ+SbzQfTqU4ka67qsghdSZxSViWJPsYbZVEoAdB04t89/1O/w1cDnyilFU=') #Your Channel Access Token
+line_bot_api = LineBotApi('er/9E+FlryNsGoGT+Rj2Rex5psACBaeJy0u6hYZ6KjFP8pbT2Fjef0KLSJAZBOW3CHtj/R71zRtxJBXEPbpx5VyPsQMfVhf2lftDAON5ROCufNk/S85b0UsTgm8OZ9ylwWh6acsMjsUFxqbpO67BJwdB04t89/1O/w1cDnyilFU=') #Your Channel Access Token
 handler = WebhookHandler('7426f045e38ab7ad11f4b171f1ff0e42') #Your Channel Secret
-@app.route("/")
-print("Yooka:")
 
-    
 @app.route("/callback", methods=['POST'])
 def callback():
     # get X-Line-Signature header value
@@ -38,13 +35,13 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_text_message(event):
-    text = event.message.text #message from user
+    #text = event.message.text #message from user
 
     line_bot_api.reply_message(
         event.reply_token,
-        TextSendMessage(text=text)) #reply the same message from user
+        TextSendMessage(text=even.message.text)) #reply the same message from user
     
 
 import os
 if __name__ == "__main__":
-    app.run(host='0.0.0.0',port=os.environ['PORT'])
+    app.run()
