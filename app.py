@@ -1,7 +1,12 @@
-from flask import Flask, request, abort
+from __future__ import unicode_literals
 
+import os
+import sys
+from argparse import ArgumentParser
+
+from flask import Flask, request, abort
 from linebot import (
-    LineBotApi, WebhookHandler
+    LineBotApi, WebhookParser
 )
 from linebot.exceptions import (
     InvalidSignatureError
