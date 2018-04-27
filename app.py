@@ -1,12 +1,7 @@
-from __future__ import unicode_literals
-
-import os
-import sys
-from argparse import ArgumentParser
-
 from flask import Flask, request, abort
+
 from linebot import (
-    LineBotApi, WebhookParser
+    LineBotApi, WebhookHandler
 )
 from linebot.exceptions import (
     InvalidSignatureError
@@ -34,24 +29,19 @@ def callback():
     app.logger.info("Request body: " + body)
 
     # handle webhook body
-        try:
-        events = parser.parse(body, signature)
+    try:
+        handler.handle(body, signature)
     except InvalidSignatureError:
         abort(400)
 
-    # if event is MessageEvent and message is TextMessage, then echo text
-    for event in events:
-        if not isinstance(event, MessageEvent):
-            continue
-        if not isinstance(event.message, TextMessage):
-            continue
-
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text=event.message.text)
-        )
-
     return 'OK'
+
+
+@handler.add(MessageEvent, message=TextMessage)
+def handle_message(event):
+    line_bot_api.reply_message(
+        event.reply_token,
+        TextSendMessage(text=event.message.text))
 
 
 if __name__ == "__main__":
