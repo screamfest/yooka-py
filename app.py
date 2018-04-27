@@ -45,7 +45,46 @@ def handle_message(event):
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=a))
-    
+    elif(b=="assalamualaikum"):
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text="Waalaikumsalam"))
+    elif(b=="selamat pagi"):
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text="Selamat pagi /n ada yang bisa saya bantu?"))
+    elif(b=="selamat siang"):
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text="Selamat siang /n ada yang bisa saya bantu?"))
+    elif(b=="selamat sore"):
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text="Selamat sore /n ada yang bisa saya bantu?"))
+    elif(b=="saya ingin bertanya tentang unsada"):
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text="Anda Dapat membukanya di halaman website kami www.unsada.ac.id"))
+    elif(b=="hai"):
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text="Hai juga"))
+    elif(b=="kamu siapa?"):
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text="Saya Yooka Petugas PMB Unsada"))
+    elif(b=="yooka saya mau tanya di unsada ada jurusan teknik informatika?"):
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text="Ya ada Yooka juga anak informatika ko"))
+    elif(b=="yooka saya mau tanya jadwal masuk kuliah kapan yah"):
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text="untuk mengetahui tentang jadwal kuliah anda harus login ke SIA Unsada dahulu."))
+    else:
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text="Yooka blm bisa jawab pertanyaan kamu mohon maaf yah..."))
 
 
 if __name__ == "__main__":
