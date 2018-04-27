@@ -40,10 +40,11 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     a = event.message.text
-    if(a=="test")
+    if(a=="test"):
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=a))
+    
 
 
 if __name__ == "__main__":
