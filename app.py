@@ -52,15 +52,18 @@ def handle_message(event):
     elif(b=="selamat pagi"):
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text="Selamat pagi /n ada yang bisa saya bantu?"))
+            TextSendMessage(text="Selamat pagi,ada yang bisa saya bantu?"))
     elif(b=="selamat siang"):
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text="Selamat siang /n ada yang bisa saya bantu?"))
+            TextSendMessage(text="Selamat siang, ada yang bisa saya bantu?"))
     elif(b=="selamat sore"):
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text="Selamat sore"/n"ada yang bisa saya bantu?"))
+            TextSendMessage(text="Selamat sore"))
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text="yang bisa saya bantu?"))
     elif(b=="saya ingin bertanya tentang unsada"):
         line_bot_api.reply_message(
             event.reply_token,
