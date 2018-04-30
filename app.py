@@ -76,11 +76,11 @@ def handle_message(event):
     elif(b=="kamu siapa"):
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text="Aku Yooka, anak kampus UNSADA yang paling keren dan berwibawa. Aku bisa kasih kamu bermacam-macam informasi seputa"))
+            TextSendMessage(text="Aku Yooka, anak kampus UNSADA yang paling keren dan berwibawa. Aku bisa kasih kamu bermacam-macam informasi seputar UNSADA."))
     elif(b=="yooka, saya mau tanya di unsada ada jurusan teknik informatika ngga"):
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text="Ya ada Yooka juga anak informatika kok :)"))
+            TextSendMessage(text="Ada dong! Yooka kan anak informatika UNSADA :)"))
     elif(b=="yooka, jadwal masuk kuliah kapan ya"):
         line_bot_api.reply_message(
             event.reply_token,
