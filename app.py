@@ -63,31 +63,31 @@ def handle_message(event):
             TextSendMessage(text="Selamat sore"))
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text="yang bisa saya bantu?"))
-    elif(b=="saya ingin bertanya tentang unsada"):
+            TextSendMessage(text="Ada yang bisa Yooka bantu?"))
+    elif(b=="mau tanya dong tentang unsada"):
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text="Anda Dapat membukanya di halaman website kami www.unsada.ac.id"))
+            TextSendMessage(text="Kamu bisa cek info lengkapnya disini: www.unsada.ac.id"))
     elif(b=="hai"):
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text="Hai juga"))
-    elif(b=="kamu siapa?"):
+    elif(b=="siapa kamu?"):
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text="Saya Yooka Petugas PMB Unsada"))
-    elif(b=="yooka saya mau tanya di unsada ada jurusan teknik informatika?"):
+            TextSendMessage(text="Aku Yooka, teman virtual yang bisa kasih kamu informasi seputar UNSADA"))
+    elif(b=="yooka, saya mau tanya di unsada ada jurusan teknik informatika?"):
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text="Ya ada Yooka juga anak informatika ko"))
-    elif(b=="yooka saya mau tanya jadwal masuk kuliah kapan yah"):
+            TextSendMessage(text="Ya ada Yooka juga anak informatika kok :)"))
+    elif(b=="yooka, jadwal masuk kuliah kapan ya?"):
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text="untuk mengetahui tentang jadwal kuliah anda harus login ke SIA Unsada dahulu."))
+            TextSendMessage(text="coba login dulu di portal.unsada.ac.id nanti kamu bisa cek langsung disitu. Lengkap kok!"))
     else:
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text="Yooka blm bisa jawab pertanyaan kamu mohon maaf yah..."))
+            TextSendMessage(text="Hmm, Yooka belum ngerti banyak hal nih. Sebentar Yooka pelajari dulu.. :p"))
 
 
 if __name__ == "__main__":
