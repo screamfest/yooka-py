@@ -15,8 +15,8 @@ app = Flask(__name__)
 # get channel_secret and channel_access_token from your environment variable
 
 
-line_bot_api = LineBotApi('DWuMGd04tRmRhlAzOnY++fWTy4pud23Ht0tphKJa3a1jddJMRYkrg6wYJkc/0x3vCHtj/R71zRtxJBXEPbpx5VyPsQMfVhf2lftDAON5RODKtsC+PZ+SbzQfTqU4ka67qsghdSZxSViWJPsYbZVEoAdB04t89/1O/w1cDnyilFU=')
-handler = WebhookHandler('7426f045e38ab7ad11f4b171f1ff0e42')
+line_bot_api = LineBotApi('lV5dotbVQarTPp3UnIln+3DtG3L+RpDJOnYwfd4Hh/uFxGK3IPnR1zVSmEvGAiD+Fy/D9VxrVPu7q7pTNqcG2GBaE4WpDlZDCEL6vmNYbzbZnzc2fBpTCuACvjdpKkaYwQKStQX92jK0yUdKqN+FBQdB04t89/1O/w1cDnyilFU=')
+handler = WebhookHandler('1891eb6bb7a1dc770e8ce73fb9ec22f0') #channel secret
 
 
 @app.route("/callback", methods=['POST'])
@@ -52,18 +52,19 @@ def handle_message(event):
     elif(b=="selamat pagi"):
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text="Selamat pagi,ada yang bisa saya bantu?"))
+            TextSendMessage(text="Selamat pagi, ada yang bisa Yooka bantu?"))
     elif(b=="selamat siang"):
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text="Selamat siang, ada yang bisa saya bantu?"))
+            TextSendMessage(text="Selamat siang, ada yang bisa Yooka bantu?"))
     elif(b=="selamat sore"):
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text="Selamat sore"))
+            TextSendMessage(text="Sore, Boss! Apa yang bisa Yooka bantu?"))
+    elif(b=="ngga ada"):
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text="Ada yang bisa Yooka bantu?"))
+            TextSendMessage(text="yaudah kalo ngga ada, bhay!"))
     elif(b=="mau tanya dong tentang unsada"):
         line_bot_api.reply_message(
             event.reply_token,
@@ -72,22 +73,30 @@ def handle_message(event):
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text="Hai juga"))
-    elif(b=="siapa kamu?"):
+    elif(b=="kamu siapa"):
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text="Aku Yooka, teman virtual yang bisa kasih kamu informasi seputar UNSADA"))
-    elif(b=="yooka, saya mau tanya di unsada ada jurusan teknik informatika?"):
+            TextSendMessage(text="Aku Yooka, anak kampus UNSADA yang paling keren dan berwibawa. Aku bisa kasih kamu bermacam-macam informasi seputa"))
+    elif(b=="yooka, saya mau tanya di unsada ada jurusan teknik informatika ngga"):
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text="Ya ada Yooka juga anak informatika kok :)"))
-    elif(b=="yooka, jadwal masuk kuliah kapan ya?"):
+    elif(b=="yooka, jadwal masuk kuliah kapan ya"):
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text="coba login dulu di portal.unsada.ac.id nanti kamu bisa cek langsung disitu. Lengkap kok!"))
+    elif(b=="yooka angkatan berapa"):
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text="lagi masa-masa kelam mengurus Kerja Praktek sama Skripsi nih. Jangan tanya angkatan berapa ya :)"))
+    elif(b=="question"):
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text="answer"))
     else:
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text="Hmm, Yooka belum ngerti banyak hal nih. Sebentar Yooka pelajari dulu.. :p"))
+            TextSendMessage(text="Yooka blm bisa jawab chat kamu :( Coba chat yang lain.. mungkin aku bisa jawab hohoho"))
 
 
 if __name__ == "__main__":
