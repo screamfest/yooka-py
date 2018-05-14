@@ -1,4 +1,9 @@
-from flask.ext.sqlalchemy import SQLAlchemy
+import os
+import psycopg2
+
+DATABASE_URL = os.environ['DATABASE_URL']
+
+conn = psycopg2.connect(DATABASE_URL, sslmode='require')
 from flask import Flask, request, abort
 
 from linebot import (
@@ -12,8 +17,7 @@ from linebot.models import (
 )
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
-db = SQLAlchemy(d12u54927hlqno)
+
 # get channel_secret and channel_access_token from your environment variable
 
 
