@@ -1,3 +1,9 @@
+import os
+import psycopg2
+
+DATABASE_URL = os.environ['d12u54927hlqno']
+
+conn = psycopg2.connect(DATABASE_URL, sslmode='require')
 from flask import Flask, request, abort
 
 from linebot import (
