@@ -103,7 +103,7 @@ def handle_message(event):
     else:
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text="Yooka blm bisa jawab chat kamu. Coba chat yang lain, mungkin aku bisa jawab hohoho"))
+            TextSendMessage(text="Aduh, sorry nih. Kayaknya soal itu aku belum ngerti."))
 
 
 if __name__ == "__main__":
