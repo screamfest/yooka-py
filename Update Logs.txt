@@ -1,0 +1,4 @@
+Mohon informasikan apabila ada perubahan dengan logs disini.
+
+15 Mei 2018 : Update informasi terbaru agar bisa koneksi dengan PGAdmin 4.20. Fixed Bug. Database connected. Yooka berfungsi dengan baik, reply chat mirror.
+

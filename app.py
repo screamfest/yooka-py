@@ -1,6 +1,5 @@
 import os
 import psycopg2
-import random
 
 DATABASE_URL = os.environ['DATABASE_URL']
 
@@ -17,14 +16,13 @@ from linebot.exceptions import (
 from linebot.models import (
     MessageEvent, TextMessage, TextSendMessage,
 )
-from botresponses import (
-    bot_responses
-)
 
 app = Flask(__name__)
 
+# get channel_secret and channel_access_token from your environment variable
 
-line_bot_api = LineBotApi('lV5dotbVQarTPp3UnIln+3DtG3L+RpDJOnYwfd4Hh/uFxGK3IPnR1zVSmEvGAiD+Fy/D9VxrVPu7q7pTNqcG2GBaE4WpDlZDCEL6vmNYbzbZnzc2fBpTCuACvjdpKkaYwQKStQX92jK0yUdKqN+FBQdB04t89/1O/w1cDnyilFU=') #channel access token
+
+line_bot_api = LineBotApi('lV5dotbVQarTPp3UnIln+3DtG3L+RpDJOnYwfd4Hh/uFxGK3IPnR1zVSmEvGAiD+Fy/D9VxrVPu7q7pTNqcG2GBaE4WpDlZDCEL6vmNYbzbZnzc2fBpTCuACvjdpKkaYwQKStQX92jK0yUdKqN+FBQdB04t89/1O/w1cDnyilFU=')
 handler = WebhookHandler('1891eb6bb7a1dc770e8ce73fb9ec22f0') #channel secret
 
 
@@ -49,18 +47,6 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     a = event.message.text
-    b = a.lower()
-    if b in user_responses:
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text=bot_responses))
-
-
-#handler message yang sudah sukses
-"""
-@handler.add(MessageEvent, message=TextMessage)
-def handle_message(event):
-    a = event.message.text
     b =a.lower()
     if(b=="test"):
         line_bot_api.reply_message(
@@ -73,23 +59,15 @@ def handle_message(event):
     elif(b=="selamat pagi"):
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text="Selamat pagi!"))
+            TextSendMessage(text="Selamat pagi, ada yang bisa Yooka bantu?"))
     elif(b=="selamat siang"):
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text="Selamat siang!"))
+            TextSendMessage(text="Selamat siang, ada yang bisa Yooka bantu?"))
     elif(b=="selamat sore"):
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text="Sore, boss!"))
-    elif(b=="hai"):
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text="Hai kamu yang disana :)"))
-    elif(b=="halo"):
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text="Aloha!"))
+            TextSendMessage(text="Sore, Boss! Apa yang bisa Yooka bantu?"))
     elif(b=="ngga ada"):
         line_bot_api.reply_message(
             event.reply_token,
@@ -98,10 +76,26 @@ def handle_message(event):
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text="Kamu bisa cek info lengkapnya disini: www.unsada.ac.id"))
-    elif(b=="siapa kamu"):
+    elif(b=="hai"):
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text="Hai juga"))
+    elif(b=="kamu siapa"):
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text="Aku Yooka, anak kampus UNSADA yang paling keren dan berwibawa. Aku bisa kasih kamu bermacam-macam informasi seputar UNSADA."))
+    elif(b=="yooka, saya mau tanya di unsada ada jurusan teknik informatika ngga"):
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text="Ada dong! Yooka kan anak informatika UNSADA :)"))
+    elif(b=="yooka, jadwal masuk kuliah kapan ya"):
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text="coba login dulu di portal.unsada.ac.id nanti kamu bisa cek langsung disitu. Lengkap kok!"))
+    elif(b=="yooka angkatan berapa"):
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text="lagi masa-masa kelam mengurus Kerja Praktek sama Skripsi nih. Jangan tanya angkatan berapa ya :)"))
     elif(b=="question"):
         line_bot_api.reply_message(
             event.reply_token,
@@ -109,8 +103,8 @@ def handle_message(event):
     else:
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text="Mohon maaf, Yooka belum dapat menjawab pertanyaan kamu. Coba pilih bantuan menu dibawah ya!"))
-"""
+            TextSendMessage(text="Yooka blm bisa jawab chat kamu. Coba chat yang lain, mungkin aku bisa jawab hohoho"))
+
 
 if __name__ == "__main__":
     app.run()
