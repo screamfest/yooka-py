@@ -14,7 +14,12 @@ from linebot.exceptions import (
     InvalidSignatureError
 )
 from linebot.models import (
-    MessageEvent, TextMessage, TextSendMessage, TemplateSendMessage, LocationSendMessage
+    MessageEvent, 
+    TextMessage, 
+    TextSendMessage, 
+    LocationSendMessage, 
+    TemplateSendMessage,
+    Template
 )
 
 app = Flask(__name__)
@@ -56,28 +61,26 @@ def handle_message(event):
         line_bot_api.reply_message(
             event.reply_token, 
             TemplateSendMessage(
-            alt_text='Buttons template',
-    template=ButtonsTemplate(
-        thumbnail_image_url='https://example.com/image.jpg',
-        title='Menu',
-        text='Please select',
-        actions=[
-            PostbackAction(
-                label='postback',
-                text='postback text',
-                data='action=buy&itemid=1'
-            ),
-            MessageAction(
-                label='message',
-                text='message text'
-            ),
-            URIAction(
-                label='uri',
-                uri='http://example.com/'
+            thumbnail_image_url='https://example.com/image.jpg',
+            title='Menu',
+            text='Please select',
+            actions=[
+                PostbackAction(
+                    label='postback',
+                    text='postback text',
+                    data='action=buy&itemid=1'
+                ),
+                MessageAction(
+                    label='message',
+                    text='message text'
+                ),
+                URIAction(
+                    label='uri',
+                    uri='http://example.com/'
+                )
+                    ]
             )
-        ]
-    )
-))
+        )
     elif(b=="hai"):
         line_bot_api.reply_message(
             event.reply_token, LocationSendMessage(
