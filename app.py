@@ -21,6 +21,28 @@ from linebot.models import (
     TemplateSendMessage,
     Template
 )
+from linebot.models.actions import (
+    Action,
+    PostbackAction,
+    MessageAction,
+    URIAction,
+    DatetimePickerAction,
+    Action as TemplateAction,  # backward compatibility
+    PostbackAction as PostbackTemplateAction,  # backward compatibility
+    MessageAction as MessageTemplateAction,  # backward compatibility
+    URIAction as URITemplateAction,  # backward compatibility
+    DatetimePickerAction as DatetimePickerTemplateAction  # backward compatibility
+)
+from linebot.models.template import (
+    TemplateSendMessage,
+    Template,
+    ButtonsTemplate,
+    ConfirmTemplate,
+    CarouselTemplate,
+    CarouselColumn,
+    ImageCarouselTemplate,
+    ImageCarouselColumn,
+)
 
 app = Flask(__name__)
 
@@ -61,25 +83,22 @@ def handle_message(event):
         line_bot_api.reply_message(
             event.reply_token, 
             TemplateSendMessage(
-            thumbnail_image_url='https://example.com/image.jpg',
-            title='Menu',
-            text='Please select',
-            actions=[
-                PostbackAction(
-                    label='postback',
-                    text='postback text',
-                    data='action=buy&itemid=1'
-                ),
-                MessageAction(
-                    label='message',
-                    text='message text'
-                ),
-                URIAction(
-                    label='uri',
-                    uri='http://example.com/'
-                )
-                    ]
+    alt_text='Confirm template',
+    template=ConfirmTemplate(
+        text='Are you sure?',
+        actions=[
+            PostbackAction(
+                label='postback',
+                text='postback text',
+                data='action=buy&itemid=1'
+            ),
+            MessageAction(
+                label='message',
+                text='message text'
             )
+        ]
+    )
+)
         )
     elif(b=="hai"):
         line_bot_api.reply_message(
