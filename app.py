@@ -14,7 +14,7 @@ from linebot.exceptions import (
     InvalidSignatureError
 )
 from linebot.models import (
-    MessageEvent, TextMessage, TextSendMessage,
+    MessageEvent, TextMessage, TextSendMessage, ButtonsTemplate 
 )
 
 app = Flask(__name__)
@@ -55,7 +55,7 @@ def handle_message(event):
     elif(b=="info pmb"):
         line_bot_api.reply_message(
             event.reply_token, 
-            TemplateSendMessage(
+            ButtonsTemplate(
             {
         "type": "template",
         "altText": "this is a buttons template",
