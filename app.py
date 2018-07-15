@@ -90,10 +90,11 @@ def handle_message(event):
             })
     elif(b=="hai"):
         line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage("type": "message",
-                        "label": "Daftar Jurusan",
-                        "text": "Data Fakultas Unsada")
+            event.reply_token,LocationSendMessage(
+        title='my location',
+        address='Tokyo',
+        latitude=35.65910807942215,
+        longitude=139.70372892916203))
     elif(b=="kamu siapa"):
         line_bot_api.reply_message(
             event.reply_token,
