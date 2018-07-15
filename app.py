@@ -47,7 +47,7 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     a = event.message.text
-    b =a.lower()
+    b = a.lower()
     if(b=="test"):
         line_bot_api.reply_message(
             event.reply_token,
@@ -91,7 +91,9 @@ def handle_message(event):
     elif(b=="hai"):
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text="Hai juga"))
+            TextSendMessage("type": "message",
+                        "label": "Daftar Jurusan",
+                        "text": "Data Fakultas Unsada")
     elif(b=="kamu siapa"):
         line_bot_api.reply_message(
             event.reply_token,
