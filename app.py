@@ -7,41 +7,13 @@ conn = psycopg2.connect(DATABASE_URL, sslmode='require')
 
 from flask import Flask, request, abort
 
+from linebot import models
+
 from linebot import (
     LineBotApi, WebhookHandler
 )
 from linebot.exceptions import (
     InvalidSignatureError
-)
-from linebot.models import (
-    MessageEvent, 
-    TextMessage, 
-    TextSendMessage, 
-    LocationSendMessage, 
-    TemplateSendMessage,
-    Template
-)
-from linebot.models.actions import (
-    Action,
-    PostbackAction,
-    MessageAction,
-    URIAction,
-    DatetimePickerAction,
-    Action as TemplateAction,  # backward compatibility
-    PostbackAction as PostbackTemplateAction,  # backward compatibility
-    MessageAction as MessageTemplateAction,  # backward compatibility
-    URIAction as URITemplateAction,  # backward compatibility
-    DatetimePickerAction as DatetimePickerTemplateAction  # backward compatibility
-)
-from linebot.models.template import (
-    TemplateSendMessage,
-    Template,
-    ButtonsTemplate,
-    ConfirmTemplate,
-    CarouselTemplate,
-    CarouselColumn,
-    ImageCarouselTemplate,
-    ImageCarouselColumn,
 )
 
 app = Flask(__name__)
