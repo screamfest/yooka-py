@@ -56,58 +56,38 @@ def handle_message(event):
         line_bot_api.reply_message(
             event.reply_token,
             {
-  "type": "template",
-  "altText": "this is a buttons template",
-  "template": {
-    "type": "buttons",
-    "actions": [
-      {
-        "type": "message",
-        "label": "Pendaftaran PMB",
-        "text": "Informasi pendaftaran PMB"
-      },
-      {
-        "type": "uri",
-        "label": "Web Unsada",
-        "uri": "https://unsada.ac.id"
-      },
-      {
-        "type": "postback",
-        "label": "Biaya Kuliah",
-        "text": "Biaya Kuliah di Unsada",
-        "data": "data_biaya_kuliah"
-      },
-      {
-        "type": "message",
-        "label": "Daftar Jurusan",
-        "text": "Data Fakultas Unsada"
-      }
-    ],
-    "thumbnailImageUrl": "SPECIFY_YOUR_IMAGE_URL",
-    "title": "Info PMB",
-    "text": "Informasi Penerimaan Mahasiswa Baru"
-  }
-})
-    elif(b=="selamat pagi"):
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text="Selamat pagi, ada yang bisa Yooka bantu?"))
-    elif(b=="selamat siang"):
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text="Selamat siang, ada yang bisa Yooka bantu?"))
-    elif(b=="selamat sore"):
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text="Sore, Boss! Apa yang bisa Yooka bantu?"))
-    elif(b=="ngga ada"):
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text="yaudah kalo ngga ada, bhay!"))
-    elif(b=="mau tanya dong tentang unsada"):
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text="Kamu bisa cek info lengkapnya disini: www.unsada.ac.id"))
+                "type": "template",
+                "altText": "this is a buttons template",
+                "template": {
+                    "type": "buttons",
+                    "actions": [
+                    {
+                        "type": "message",
+                        "label": "Pendaftaran PMB",
+                        "text": "Informasi pendaftaran PMB"
+                    },
+                    {
+                        "type": "uri",
+                        "label": "Web Unsada",
+                        "uri": "https://unsada.ac.id"
+                    },
+                    {
+                        "type": "postback",
+                        "label": "Biaya Kuliah",
+                        "text": "Biaya Kuliah di Unsada",
+                        "data": "data_biaya_kuliah"
+                    },
+                    {
+                        "type": "message",
+                        "label": "Daftar Jurusan",
+                        "text": "Data Fakultas Unsada"
+                    }
+                    ],
+                    "thumbnailImageUrl": "SPECIFY_YOUR_IMAGE_URL",
+                    "title": "Info PMB",
+                    "text": "Informasi Penerimaan Mahasiswa Baru"
+                    }
+            })
     elif(b=="hai"):
         line_bot_api.reply_message(
             event.reply_token,
@@ -116,18 +96,6 @@ def handle_message(event):
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text="Aku Yooka, anak kampus UNSADA yang paling keren dan berwibawa. Aku bisa kasih kamu bermacam-macam informasi seputar UNSADA."))
-    elif(b=="yooka, saya mau tanya di unsada ada jurusan teknik informatika ngga"):
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text="Ada dong! Yooka kan anak informatika UNSADA :)"))
-    elif(b=="yooka, jadwal masuk kuliah kapan ya"):
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text="coba login dulu di portal.unsada.ac.id nanti kamu bisa cek langsung disitu. Lengkap kok!"))
-    elif(b=="yooka angkatan berapa"):
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text="lagi masa-masa kelam mengurus Kerja Praktek sama Skripsi nih. Jangan tanya angkatan berapa ya :)"))
     elif(b=="question"):
         line_bot_api.reply_message(
             event.reply_token,
