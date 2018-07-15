@@ -54,47 +54,50 @@ def handle_message(event):
             TextSendMessage(text=a))
     elif(b=="info pmb"):
         line_bot_api.reply_message(
-            event.reply_token,
+            event.reply_token, 
+            TemplateSendMessage(
             {
-                "type": "template",
-                "altText": "this is a buttons template",
-                "template": {
-                    "type": "buttons",
-                    "actions": [
-                    {
-                        "type": "message",
-                        "label": "Pendaftaran PMB",
-                        "text": "Informasi pendaftaran PMB"
-                    },
-                    {
-                        "type": "uri",
-                        "label": "Web Unsada",
-                        "uri": "https://unsada.ac.id"
-                    },
-                    {
-                        "type": "postback",
-                        "label": "Biaya Kuliah",
-                        "text": "Biaya Kuliah di Unsada",
-                        "data": "data_biaya_kuliah"
-                    },
-                    {
-                        "type": "message",
-                        "label": "Daftar Jurusan",
-                        "text": "Data Fakultas Unsada"
-                    }
-                    ],
-                    "thumbnailImageUrl": "SPECIFY_YOUR_IMAGE_URL",
-                    "title": "Info PMB",
-                    "text": "Informasi Penerimaan Mahasiswa Baru"
-                    }
-            })
+        "type": "template",
+        "altText": "this is a buttons template",
+        "template": {
+            "type": "buttons",
+            "actions": [
+            {
+                "type": "message",
+                "label": "Pendaftaran PMB",
+                "text": "Informasi pendaftaran PMB"
+            },
+            {
+                "type": "uri",
+                "label": "Web Unsada",
+                "uri": "https://unsada.ac.id"
+            },
+            {
+                "type": "postback",
+                "label": "Biaya Kuliah",
+                "text": "Biaya Kuliah di Unsada",
+                "data": "data_biaya_kuliah"
+            },
+            {
+                "type": "message",
+                "label": "Daftar Jurusan",
+                "text": "Data Fakultas Unsada"
+            }
+            ],
+            "thumbnailImageUrl": "SPECIFY_YOUR_IMAGE_URL",
+            "title": "Info PMB",
+            "text": "Informasi Penerimaan Mahasiswa Baru"
+        }
+        }
+))
     elif(b=="hai"):
         line_bot_api.reply_message(
-            event.reply_token,LocationSendMessage(
-        title='my location',
-        address='Tokyo',
-        latitude=35.65910807942215,
-        longitude=139.70372892916203))
+            event.reply_token, LocationSendMessage(
+                title='my location',
+                address='Tokyo',
+                latitude=35.65910807942215,
+                longitude=139.70372892916203
+            ))
     elif(b=="kamu siapa"):
         line_bot_api.reply_message(
             event.reply_token,
