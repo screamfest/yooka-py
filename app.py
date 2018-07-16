@@ -7,14 +7,13 @@ conn = psycopg2.connect(DATABASE_URL, sslmode='require')
 
 from flask import Flask, request, abort
 
+from linebot import models
+
 from linebot import (
     LineBotApi, WebhookHandler
 )
 from linebot.exceptions import (
     InvalidSignatureError
-)
-from linebot.models import (
-    MessageEvent, TextMessage, TextSendMessage,
 )
 
 app = Flask(__name__)
@@ -47,55 +46,44 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     a = event.message.text
-    b =a.lower()
+    b = a.lower()
     if(b=="test"):
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=a))
-    elif(b=="assalamualaikum"):
+    elif(b=="info pmb"):
         line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text="Waalaikumsalam"))
-    elif(b=="selamat pagi"):
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text="Selamat pagi, ada yang bisa Yooka bantu?"))
-    elif(b=="selamat siang"):
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text="Selamat siang, ada yang bisa Yooka bantu?"))
-    elif(b=="selamat sore"):
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text="Sore, Boss! Apa yang bisa Yooka bantu?"))
-    elif(b=="ngga ada"):
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text="yaudah kalo ngga ada, bhay!"))
-    elif(b=="mau tanya dong tentang unsada"):
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text="Kamu bisa cek info lengkapnya disini: www.unsada.ac.id"))
+            event.reply_token, 
+            TemplateSendMessage(
+    alt_text='Confirm template',
+    template=ConfirmTemplate(
+        text='Are you sure?',
+        actions=[
+            PostbackAction(
+                label='postback',
+                text='postback text',
+                data='action=buy&itemid=1'
+            ),
+            MessageAction(
+                label='message',
+                text='message text'
+            )
+        ]
+    )
+)
+        )
     elif(b=="hai"):
         line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text="Hai juga"))
+            event.reply_token, LocationSendMessage(
+                title='my location',
+                address='Tokyo',
+                latitude=35.65910807942215,
+                longitude=139.70372892916203
+            ))
     elif(b=="kamu siapa"):
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text="Aku Yooka, anak kampus UNSADA yang paling keren dan berwibawa. Aku bisa kasih kamu bermacam-macam informasi seputar UNSADA."))
-    elif(b=="yooka, saya mau tanya di unsada ada jurusan teknik informatika ngga"):
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text="Ada dong! Yooka kan anak informatika UNSADA :)"))
-    elif(b=="yooka, jadwal masuk kuliah kapan ya"):
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text="coba login dulu di portal.unsada.ac.id nanti kamu bisa cek langsung disitu. Lengkap kok!"))
-    elif(b=="yooka angkatan berapa"):
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text="lagi masa-masa kelam mengurus Kerja Praktek sama Skripsi nih. Jangan tanya angkatan berapa ya :)"))
     elif(b=="question"):
         line_bot_api.reply_message(
             event.reply_token,
