@@ -187,7 +187,7 @@ def handle_message(event):
     elif(b=="kamu siapa"):
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text="Aku Yooka, anak kampus UNSADA yang paling keren dan berwibawa. Aku bisa kasih kamu bermacam-macam informasi seputar UNSADA."))
+            TextSendMessage(text="Yooka"))
     elif(b=="question"):
         line_bot_api.reply_message(
             event.reply_token,
@@ -195,7 +195,7 @@ def handle_message(event):
     else:
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text="Aduh, sorry nih. Kayaknya soal itu aku belum ngerti."))
+            TextSendMessage(text="wah, sorry nih. Tampaknya soal itu aku belum paham"))
 
 
 if __name__ == "__main__":
