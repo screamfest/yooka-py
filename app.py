@@ -7,13 +7,117 @@ conn = psycopg2.connect(DATABASE_URL, sslmode='require')
 
 from flask import Flask, request, abort
 
-from linebot import models
-
 from linebot import (
     LineBotApi, WebhookHandler
 )
 from linebot.exceptions import (
     InvalidSignatureError
+)
+from linebot.models.actions import (
+    Action,
+    PostbackAction,
+    MessageAction,
+    URIAction,
+    DatetimePickerAction,
+    Action as TemplateAction,  # backward compatibility
+    PostbackAction as PostbackTemplateAction,  # backward compatibility
+    MessageAction as MessageTemplateAction,  # backward compatibility
+    URIAction as URITemplateAction,  # backward compatibility
+    DatetimePickerAction as DatetimePickerTemplateAction,  # backward compatibility
+)
+from linebot.models.base import (
+    Base,
+)
+from linebot.models.error import (
+    Error,
+    ErrorDetail,
+)
+from linebot.models.events import (
+    Event,
+    MessageEvent,
+    FollowEvent,
+    UnfollowEvent,
+    JoinEvent,
+    LeaveEvent,
+    PostbackEvent,
+    AccountLinkEvent,
+    BeaconEvent,
+    Postback,
+    Beacon,
+    Link,
+)
+from linebot.models.messages import (
+    Message,
+    TextMessage,
+    ImageMessage,
+    VideoMessage,
+    AudioMessage,
+    LocationMessage,
+    StickerMessage,
+    FileMessage,
+)
+from linebot.models.imagemap import (
+    ImagemapSendMessage,
+    BaseSize,
+    ImagemapAction,
+    URIImagemapAction,
+    MessageImagemapAction,
+    ImagemapArea,
+)
+from linebot.models.responses import (
+    Profile,
+    MemberIds,
+    Content,
+    RichMenuResponse,
+    Content as MessageContent,
+)
+from linebot.models.flex_message import (
+    FlexSendMessage,
+    FlexContainer,
+    BubbleContainer,
+    BubbleStyle,
+    BlockStyle,
+    CarouselContainer,
+    FlexComponent,
+    BoxComponent,
+    ButtonComponent,
+    FillerComponent,
+    IconComponent,
+    ImageComponent,
+    SeparatorComponent,
+    SpacerComponent,
+    TextComponent
+)
+from linebot.models.rich_menu import (
+    RichMenu,
+    RichMenuSize,
+    RichMenuArea,
+    RichMenuBounds,
+)
+from linebot.models.send_messages import (
+    SendMessage,
+    TextSendMessage,
+    ImageSendMessage,
+    VideoSendMessage,
+    AudioSendMessage,
+    LocationSendMessage,
+    StickerSendMessage,
+)
+from linebot.models.sources import (
+    Source,
+    SourceUser,
+    SourceGroup,
+    SourceRoom,
+)
+from linebot.models.template import (
+    TemplateSendMessage,
+    Template,
+    ButtonsTemplate,
+    ConfirmTemplate,
+    CarouselTemplate,
+    CarouselColumn,
+    ImageCarouselTemplate,
+    ImageCarouselColumn,
 )
 
 app = Flask(__name__)
