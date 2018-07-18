@@ -1,5 +1,6 @@
 import os
 import psycopg2
+import botbuttons
 
 DATABASE_URL = os.environ['DATABASE_URL']
 
@@ -146,21 +147,8 @@ def callback():
 
     return 'OK'
 
-
 @handler.add(MessageEvent, message=TextMessage)
-def handle_message(event):
-    rich_menu_to_create = RichMenu(
-        size=RichMenuSize(width=2500, height=843),
-        selected=False,
-        name="Nice richmenu",
-        chat_bar_text="Tap here",
-        areas=[RichMenuArea(
-            bounds=RichMenuBounds(x=0, y=0, width=2500, height=843),
-            action=URIAction(label='Go to line.me', uri='https://line.me'))]
-    )
-    rich_menu_id = line_bot_api.create_rich_menu(rich_menu=rich_menu_to_create)
-    print(rich_menu_id)
-    
+def usual_message(event):
     a = event.message.text
     b = a.lower()
     if(b=="test"):
@@ -173,7 +161,7 @@ def handle_message(event):
             TemplateSendMessage(
     alt_text='Confirm template',
     template=ConfirmTemplate(
-        text='Are you sure?',
+        text='Informasi Penerimaan Mahasiswa Baru',
         actions=[
             PostbackAction(
                 label='postback',
@@ -188,15 +176,15 @@ def handle_message(event):
     )
 )
         )
-    elif(b=="hai"):
+    elif(b=="lokasi unsada"):
         line_bot_api.reply_message(
             event.reply_token, LocationSendMessage(
-                title='my location',
-                address='Tokyo',
+                title='Universitas Darma Persada',
+                address='Jakarta Timur',
                 latitude=35.65910807942215,
                 longitude=139.70372892916203
             ))
-    elif(b=="kamu siapa"):
+    elif(b=="siapa kamu"):
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text="Yooka"))
