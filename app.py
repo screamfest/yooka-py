@@ -200,17 +200,18 @@ def usual_message(event):
                 longitude=139.70372892916203
         )
         )
-
     elif(b=="konfirmasi"):
         line_bot_api.reply_message(
             event.reply_token,
-            ConfirmTemplate(
+            TemplateSendMessage(
+                alt_text='Confirm template',
+                template=ConfirmTemplate(
                 text='Are you sure?',
                     actions=[
                     PostbackAction(
                         label='postback',
                         text='postback text',
-                        data=''
+                        data='action=buy&itemid=1'
                     ),
                     MessageAction(
                         label='message',
@@ -219,12 +220,12 @@ def usual_message(event):
                     ]
             )
         )
-
+        )
     elif(b=="carousel"):
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(
-                alt_text='Carousel template',
+            TemplateSendMessage(
+            alt_text='Carousel template',
             template=CarouselTemplate(
                 columns=[
                     CarouselColumn(
