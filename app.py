@@ -204,9 +204,7 @@ def usual_message(event):
     elif(b=="konfirmasi"):
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(
-            alt_text='Confirm template',
-            template=ConfirmTemplate(
+            ConfirmTemplate(
                 text='Are you sure?',
                     actions=[
                     PostbackAction(
@@ -220,7 +218,6 @@ def usual_message(event):
                     )
                     ]
             )
-        )
         )
 
     elif(b=="carousel"):
