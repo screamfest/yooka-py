@@ -1,13 +1,6 @@
 import os
 import psycopg2
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 import botbuttons
->>>>>>> 3b75af30f0813bbb8b993aacbc70f5eb8148add6
-=======
-import botbuttons
->>>>>>> cf809af91942634243297095da198c4da156a3f5
 
 DATABASE_URL = os.environ['DATABASE_URL']
 
@@ -15,11 +8,8 @@ conn = psycopg2.connect(DATABASE_URL, sslmode='require')
 
 from flask import Flask, request, abort
 
-<<<<<<< HEAD
-=======
 from linebot import models
 
->>>>>>> cf809af91942634243297095da198c4da156a3f5
 from linebot import (
     LineBotApi, WebhookHandler
 )
@@ -160,43 +150,13 @@ def callback():
     return 'OK'
 
 @handler.add(MessageEvent, message=TextMessage)
-<<<<<<< HEAD
-def usual_message(event):
-=======
 def yooka_template(event):
->>>>>>> cf809af91942634243297095da198c4da156a3f5
     a = event.message.text
     b = a.lower()
     if(b=="test"):
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=a))
-<<<<<<< HEAD
-    elif(b=="info pmb"):
-        line_bot_api.reply_message(
-            event.reply_token, 
-            TemplateSendMessage(
-    alt_text='Confirm template',
-    template=ConfirmTemplate(
-        text='Informasi Penerimaan Mahasiswa Baru',
-        actions=[
-            PostbackAction(
-                label='postback',
-                text='postback text',
-                data='action=buy&itemid=1'
-            ),
-            MessageAction(
-                label='message',
-                text='message text'
-            )
-        ]
-    )
-)
-        )
-    elif(b=="lokasi unsada"):
-        line_bot_api.reply_message(
-            event.reply_token, LocationSendMessage(
-=======
     elif(b=="image carousel"):
         line_bot_api.reply_message(
             event.reply_token, 
@@ -236,14 +196,10 @@ def yooka_template(event):
         line_bot_api.reply_message(
             event.reply_token, 
             LocationSendMessage(
->>>>>>> cf809af91942634243297095da198c4da156a3f5
                 title='Universitas Darma Persada',
                 address='Jakarta Timur',
                 latitude=35.65910807942215,
                 longitude=139.70372892916203
-<<<<<<< HEAD
-            ))
-=======
         )
         )
     elif(b=="konfirmasi"):
@@ -318,7 +274,6 @@ def yooka_template(event):
             )
             )
         )
->>>>>>> cf809af91942634243297095da198c4da156a3f5
     elif(b=="siapa kamu"):
         line_bot_api.reply_message(
             event.reply_token,
@@ -330,14 +285,6 @@ def yooka_template(event):
     else:
         line_bot_api.reply_message(
             event.reply_token,
-<<<<<<< HEAD
-<<<<<<< HEAD
-            TextSendMessage(text="Yooka blm bisa jawab chat kamu. Coba chat yang lain, mungkin aku bisa jawab hohoho"))
-=======
-            TextSendMessage(text="wah, sorry nih. Tampaknya soal itu aku belum paham. Coba cek Menu bantuan dibawah."))
->>>>>>> 3b75af30f0813bbb8b993aacbc70f5eb8148add6
-
-=======
             TextSendMessage(text="Wah, keliatannya aku kurang paham. Coba cek Quick Menu dibawah."))
 
 """
@@ -348,7 +295,6 @@ def feature_one(Event):
         line_bot_api.rep
         line_bot_api.push_message(to, TextSendMessage(text='Hello World!'))
 """
->>>>>>> cf809af91942634243297095da198c4da156a3f5
 
 if __name__ == "__main__":
     app.run()
