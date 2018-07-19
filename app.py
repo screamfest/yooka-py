@@ -149,8 +149,6 @@ def callback():
 
     return 'OK'
 
-@handler.
-
 @handler.add(MessageEvent, message=TextMessage)
 def yooka_template(event):
     a = event.message.text
