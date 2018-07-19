@@ -200,6 +200,7 @@ def usual_message(event):
                 longitude=139.70372892916203
         )
         )
+        
     elif(b=="konfirmasi"):
         line_bot_api.reply_message(
             event.reply_token,
@@ -218,7 +219,7 @@ def usual_message(event):
             ]
             )
         )
-        )
+
     elif(b=="carousel"):
         line_bot_api.reply_message(
             event.reply_token,
