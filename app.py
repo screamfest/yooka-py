@@ -155,7 +155,7 @@ def usual_message(event):
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=a))
-    elif(b=="quick menu"):
+    elif(b=="image carousel"):
         line_bot_api.reply_message(
             event.reply_token, 
             TemplateSendMessage(
@@ -192,20 +192,39 @@ def usual_message(event):
         )
     elif(b=="lokasi unsada"):
         line_bot_api.reply_message(
-            event.reply_token, LocationSendMessage(
+            event.reply_token, 
+            LocationSendMessage(
                 title='Universitas Darma Persada',
                 address='Jakarta Timur',
                 latitude=35.65910807942215,
                 longitude=139.70372892916203
             ))
-    elif(b=="siapa kamu"):
+    elif(b=="confirm message"):
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text="Yooka"))
+            TextSendMessage(
+                alt_text='Confirm template',
+                template=ConfirmTemplate(
+                text='Are you sure?',
+                actions=[
+                    PostbackAction(
+                        label='postback', display_text='postback text',
+                        data='action=buy&itemid=1'
+                    ),
+                    MessageAction(
+                        label='message', text='message text'
+                    )
+                ]
+            )
+            )
     elif(b=="question"):
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text="answer"))
+    elif(b=="siapa kamu"):
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text="Yooka"))
     else:
         line_bot_api.reply_message(
             event.reply_token,
