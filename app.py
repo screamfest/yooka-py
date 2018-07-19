@@ -198,7 +198,8 @@ def usual_message(event):
                 address='Jakarta Timur',
                 latitude=35.65910807942215,
                 longitude=139.70372892916203
-            ))
+        )
+        )
     elif(b=="confirm message"):
         line_bot_api.reply_message(
             event.reply_token,
@@ -217,14 +218,15 @@ def usual_message(event):
                 ]
             )
             )
-    elif(b=="question"):
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text="answer"))
+        )
     elif(b=="siapa kamu"):
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text="Yooka"))
+    elif(b=="question"):
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text="answer"))
     else:
         line_bot_api.reply_message(
             event.reply_token,
