@@ -204,8 +204,6 @@ def usual_message(event):
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(
-                alt_text='Confirm template',
-                template=ConfirmTemplate(
                 text='Are you sure?',
                 actions=[
                     PostbackAction(
