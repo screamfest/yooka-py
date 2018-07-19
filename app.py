@@ -216,7 +216,6 @@ def usual_message(event):
                 ]
             )
             )
-        )
     elif(b=="siapa kamu"):
         line_bot_api.reply_message(
             event.reply_token,
