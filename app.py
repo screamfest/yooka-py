@@ -205,23 +205,23 @@ def usual_message(event):
             event.reply_token,
             TextSendMessage(
                 alt_text='Confirm template',
-            template=ConfirmTemplate(
-                type="confirm",
-                text="Are you sure?",
-                actions=[
-                    PostbackAction(
-                        type="postback",
-                        label="postback",
-                        displayText="postback text",
-                        data="action=buy&itemid=1"
-                    ),
-                    MessageAction(
-                        type="message",
-                        label="message",
-                        text="message text"
-                    )
-                ]
-            )
+                template=ConfirmTemplate(
+                    type="confirm",
+                    text="Are you sure?",
+                    actions=[
+                        PostbackAction(
+                            type="postback",
+                            label="postback",
+                            displayText="postback text",
+                            data="action=buy&itemid=1"
+                        ),
+                        MessageAction(
+                            type="message",
+                            label="message",
+                            text="message text"
+                        )
+                        ]
+                )
             )
         )
     elif(b=="carousel"):
