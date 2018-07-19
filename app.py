@@ -200,11 +200,12 @@ def usual_message(event):
                 longitude=139.70372892916203
         )
         )
-        
+
     elif(b=="konfirmasi"):
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(
+                Template=ConfirmTemplate(
                 text='Are you sure?',
                 actions=[
                 PostbackAction(
@@ -217,6 +218,7 @@ def usual_message(event):
                     text='message text'
                 )
             ]
+            )
             )
         )
 
