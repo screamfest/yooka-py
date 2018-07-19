@@ -205,21 +205,22 @@ def usual_message(event):
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(
-                Template=ConfirmTemplate(
+            alt_text='Confirm template',
+            template=ConfirmTemplate(
                 text='Are you sure?',
-                actions=[
-                PostbackAction(
-                    label='postback',
-                    text='postback text',
-                    data='action=buy&itemid=1'
-                ),
-                MessageAction(
-                    label='message',
-                    text='message text'
-                )
-            ]
+                    actions=[
+                    PostbackAction(
+                        label='postback',
+                        text='postback text',
+                        data=''
+                    ),
+                    MessageAction(
+                        label='message',
+                        text='message text'
+                    )
+                    ]
             )
-            )
+        )
         )
 
     elif(b=="carousel"):
