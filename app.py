@@ -204,21 +204,26 @@ def usual_message(event):
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(
-                text='Apa kamu yakin?',
-                actions=[
-                    PostbackAction(
-                        label='postback',
-                        display_text='postback text',
-                        data='action=buy&itemid=1'
-                    ),
-                    MessageAction(
-                        label='message', 
-                        text='message text'
-                    )
+                alt_text='Confirm template',
+            template=ConfirmTemplate(
+                "type": "confirm",
+                "text": "Are you sure?",
+                "actions": [
+                    {
+                        "type": "postback",
+                        "label": "postback",
+                        "displayText": "postback text",
+                        "data": "action=buy&itemid=1"
+                    },
+                    {
+                        "type": "message",
+                        "label": "message",
+                        "text": "message text"
+                    }
                 ]
             )
             )
-    elif(b=="carousel message"):
+    elif(b=="carousel"):
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(
