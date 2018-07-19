@@ -8,6 +8,8 @@ conn = psycopg2.connect(DATABASE_URL, sslmode='require')
 
 from flask import Flask, request, abort
 
+from linebot import models
+
 from linebot import (
     LineBotApi, WebhookHandler
 )
