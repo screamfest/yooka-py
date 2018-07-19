@@ -232,7 +232,7 @@ def usual_message(event):
                     )
                 ]
             )
-)
+        )
         )
     elif(b=="lokasi unsada"):
         line_bot_api.reply_message(
