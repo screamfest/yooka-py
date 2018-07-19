@@ -16,6 +16,7 @@ from linebot import (
 from linebot.exceptions import (
     InvalidSignatureError
 )
+<<<<<<< HEAD
 from linebot.models.actions import (
     Action,
     PostbackAction,
@@ -122,6 +123,8 @@ from linebot.models.template import (
     ImageCarouselTemplate,
     ImageCarouselColumn,
 )
+=======
+>>>>>>> b60d1101bf86f8281dbb13255f10e0d2bc29bb2b
 
 app = Flask(__name__)
 
@@ -159,6 +162,7 @@ def yooka_template(event):
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=a))
+<<<<<<< HEAD
     elif(b=="image carousel"):
         line_bot_api.reply_message(
             event.reply_token, 
@@ -280,6 +284,41 @@ def yooka_template(event):
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text="Yooka"))
+=======
+    elif(b=="info pmb"):
+        line_bot_api.reply_message(
+            event.reply_token, 
+            TemplateSendMessage(
+    alt_text='Confirm template',
+    template=ConfirmTemplate(
+        text='Are you sure?',
+        actions=[
+            PostbackAction(
+                label='postback',
+                text='postback text',
+                data='action=buy&itemid=1'
+            ),
+            MessageAction(
+                label='message',
+                text='message text'
+            )
+        ]
+    )
+)
+        )
+    elif(b=="hai"):
+        line_bot_api.reply_message(
+            event.reply_token, LocationSendMessage(
+                title='my location',
+                address='Tokyo',
+                latitude=35.65910807942215,
+                longitude=139.70372892916203
+            ))
+    elif(b=="kamu siapa"):
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text="Aku Yooka, anak kampus UNSADA yang paling keren dan berwibawa. Aku bisa kasih kamu bermacam-macam informasi seputar UNSADA."))
+>>>>>>> b60d1101bf86f8281dbb13255f10e0d2bc29bb2b
     elif(b=="question"):
         line_bot_api.reply_message(
             event.reply_token,
