@@ -204,14 +204,16 @@ def usual_message(event):
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(
-                text='Are you sure?',
+                text='Apa kamu yakin?',
                 actions=[
                     PostbackAction(
-                        label='postback', display_text='postback text',
+                        label='postback',
+                        display_text='postback text',
                         data='action=buy&itemid=1'
                     ),
                     MessageAction(
-                        label='message', text='message text'
+                        label='message', 
+                        text='message text'
                     )
                 ]
             )
@@ -220,18 +222,22 @@ def usual_message(event):
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(
+                alt_text='Carousel template',
+            template=CarouselTemplate(
                 columns=[
                     CarouselColumn(
-                        thumbnail_image_url='https://example.com'
-                                            '/item1.jpg',
-                        title='this is menu1', text='description1',
+                        thumbnail_image_url='https://example.com/item1.jpg',
+                        title='this is menu1', 
+                        text='description1',
                         actions=[
                             PostbackAction(
-                                label='postback1', display_text='postback text1',
+                                label='postback1',
+                                display_text='postback text1',
                                 data='action=buy&itemid=1'
                             ),
                             MessageAction(
-                                label='message1', text='message text1'
+                                label='message1', 
+                                text='message text1'
                             ),
                             URIAction(
                                 label='uri1',
@@ -290,6 +296,7 @@ def usual_message(event):
                         ]
                     )
                 ]
+            )
             )
         )
     elif(b=="siapa kamu"):
