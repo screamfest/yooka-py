@@ -1,9 +1,13 @@
 import os
 import psycopg2
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 import botbuttons
 >>>>>>> 3b75af30f0813bbb8b993aacbc70f5eb8148add6
+=======
+import botbuttons
+>>>>>>> cf809af91942634243297095da198c4da156a3f5
 
 DATABASE_URL = os.environ['DATABASE_URL']
 
@@ -11,6 +15,11 @@ conn = psycopg2.connect(DATABASE_URL, sslmode='require')
 
 from flask import Flask, request, abort
 
+<<<<<<< HEAD
+=======
+from linebot import models
+
+>>>>>>> cf809af91942634243297095da198c4da156a3f5
 from linebot import (
     LineBotApi, WebhookHandler
 )
@@ -151,13 +160,18 @@ def callback():
     return 'OK'
 
 @handler.add(MessageEvent, message=TextMessage)
+<<<<<<< HEAD
 def usual_message(event):
+=======
+def yooka_template(event):
+>>>>>>> cf809af91942634243297095da198c4da156a3f5
     a = event.message.text
     b = a.lower()
     if(b=="test"):
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=a))
+<<<<<<< HEAD
     elif(b=="info pmb"):
         line_bot_api.reply_message(
             event.reply_token, 
@@ -182,11 +196,129 @@ def usual_message(event):
     elif(b=="lokasi unsada"):
         line_bot_api.reply_message(
             event.reply_token, LocationSendMessage(
+=======
+    elif(b=="image carousel"):
+        line_bot_api.reply_message(
+            event.reply_token, 
+            TemplateSendMessage(
+            alt_text='Image carousel template',
+            template=ImageCarouselTemplate(
+                columns=[
+                    ImageCarouselColumn(
+                        image_url='https://example.com/'
+                                  'item1.jpg',
+                        action=PostbackAction(
+                            label='postback1',
+                            data='action=buy&itemid=1'
+                        )
+                    ),
+                    ImageCarouselColumn(
+                        image_url='https://example.com'
+                                  '/item2.jpg',
+                        action=MessageAction(
+                            label='message2',
+                            text='message text2'
+                        )
+                    ),
+                    ImageCarouselColumn(
+                        image_url='https://example.com/'
+                                  'item3.jpg',
+                        action=URIAction(
+                            label='uri1',
+                            uri='https://example.com/1'
+                        )
+                    )
+                ]
+            )
+        )
+        )
+    elif(b=="lokasi unsada"):
+        line_bot_api.reply_message(
+            event.reply_token, 
+            LocationSendMessage(
+>>>>>>> cf809af91942634243297095da198c4da156a3f5
                 title='Universitas Darma Persada',
                 address='Jakarta Timur',
                 latitude=35.65910807942215,
                 longitude=139.70372892916203
+<<<<<<< HEAD
             ))
+=======
+        )
+        )
+    elif(b=="konfirmasi"):
+        line_bot_api.reply_message(
+            event.reply_token,
+            TemplateSendMessage(
+                alt_text='Confirm template',
+                template=ConfirmTemplate(
+                text='Are you sure?',
+                    actions=[
+                    PostbackAction(
+                        label='postback',
+                        text='postback text',
+                        data='action=buy&itemid=1'
+                    ),
+                    MessageAction(
+                        label='message',
+                        text='message text'
+                    )
+                    ]
+            )
+        )
+        )
+    elif(b=="carousel"):
+        line_bot_api.reply_message(
+            event.reply_token,
+            TemplateSendMessage(
+            alt_text='Carousel template',
+        template=CarouselTemplate(
+            columns=[
+                CarouselColumn(
+                    thumbnail_image_url='https://example.com/item1.jpg',
+                    title='this is menu1',
+                    text='description1',
+                    actions=[
+                        PostbackAction(
+                            label='postback1',
+                            text='postback text1',
+                            data='action=buy&itemid=1'
+                        ),
+                        MessageAction(
+                            label='message1',
+                            text='message text1'
+                        ),
+                        URIAction(
+                            label='uri1',
+                            uri='http://example.com/1'
+                        )
+                    ]
+                ),
+                CarouselColumn(
+                    thumbnail_image_url='https://example.com/item2.jpg',
+                    title='this is menu2',
+                    text='description2',
+                    actions=[
+                        PostbackAction(
+                            label='postback2',
+                            text='postback text2',
+                            data='action=buy&itemid=2'
+                        ),
+                        MessageAction(
+                            label='message2',
+                            text='message text2'
+                        ),
+                        URIAction(
+                            label='uri2',
+                            uri='http://example.com/2'
+                        )
+                    ]
+                )
+            ]
+            )
+            )
+        )
+>>>>>>> cf809af91942634243297095da198c4da156a3f5
     elif(b=="siapa kamu"):
         line_bot_api.reply_message(
             event.reply_token,
@@ -199,11 +331,24 @@ def usual_message(event):
         line_bot_api.reply_message(
             event.reply_token,
 <<<<<<< HEAD
+<<<<<<< HEAD
             TextSendMessage(text="Yooka blm bisa jawab chat kamu. Coba chat yang lain, mungkin aku bisa jawab hohoho"))
 =======
             TextSendMessage(text="wah, sorry nih. Tampaknya soal itu aku belum paham. Coba cek Menu bantuan dibawah."))
 >>>>>>> 3b75af30f0813bbb8b993aacbc70f5eb8148add6
 
+=======
+            TextSendMessage(text="Wah, keliatannya aku kurang paham. Coba cek Quick Menu dibawah."))
+
+"""
+def feature_one(Event):
+    a = Event.message.text
+    b = a.lower()
+    if(b = botresponse):
+        line_bot_api.rep
+        line_bot_api.push_message(to, TextSendMessage(text='Hello World!'))
+"""
+>>>>>>> cf809af91942634243297095da198c4da156a3f5
 
 if __name__ == "__main__":
     app.run()
