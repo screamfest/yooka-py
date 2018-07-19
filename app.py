@@ -17,10 +17,6 @@ from linebot import (
 from linebot.exceptions import (
     InvalidSignatureError
 )
-<<<<<<< HEAD
-from linebot.models import (
-    MessageEvent, TextMessage, TextSendMessage,
-=======
 from linebot.models.actions import (
     Action,
     PostbackAction,
@@ -126,7 +122,6 @@ from linebot.models.template import (
     CarouselColumn,
     ImageCarouselTemplate,
     ImageCarouselColumn,
->>>>>>> 3b75af30f0813bbb8b993aacbc70f5eb8148add6
 )
 
 app = Flask(__name__)
@@ -155,68 +150,14 @@ def callback():
 
     return 'OK'
 
-<<<<<<< HEAD
-
-@handler.add(MessageEvent, message=TextMessage)
-def handle_message(event):
-    a = event.message.text
-    b =a.lower()
-=======
 @handler.add(MessageEvent, message=TextMessage)
 def usual_message(event):
     a = event.message.text
     b = a.lower()
->>>>>>> 3b75af30f0813bbb8b993aacbc70f5eb8148add6
     if(b=="test"):
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=a))
-<<<<<<< HEAD
-    elif(b=="assalamualaikum"):
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text="Waalaikumsalam"))
-    elif(b=="selamat pagi"):
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text="Selamat pagi, ada yang bisa Yooka bantu?"))
-    elif(b=="selamat siang"):
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text="Selamat siang, ada yang bisa Yooka bantu?"))
-    elif(b=="selamat sore"):
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text="Sore, Boss! Apa yang bisa Yooka bantu?"))
-    elif(b=="ngga ada"):
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text="yaudah kalo ngga ada, bhay!"))
-    elif(b=="mau tanya dong tentang unsada"):
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text="Kamu bisa cek info lengkapnya disini: www.unsada.ac.id"))
-    elif(b=="hai"):
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text="Hai juga"))
-    elif(b=="kamu siapa"):
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text="Aku Yooka, anak kampus UNSADA yang paling keren dan berwibawa. Aku bisa kasih kamu bermacam-macam informasi seputar UNSADA."))
-    elif(b=="yooka, saya mau tanya di unsada ada jurusan teknik informatika ngga"):
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text="Ada dong! Yooka kan anak informatika UNSADA :)"))
-    elif(b=="yooka, jadwal masuk kuliah kapan ya"):
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text="coba login dulu di portal.unsada.ac.id nanti kamu bisa cek langsung disitu. Lengkap kok!"))
-    elif(b=="yooka angkatan berapa"):
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text="lagi masa-masa kelam mengurus Kerja Praktek sama Skripsi nih. Jangan tanya angkatan berapa ya :)"))
-=======
     elif(b=="info pmb"):
         line_bot_api.reply_message(
             event.reply_token, 
@@ -250,7 +191,6 @@ def usual_message(event):
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text="Yooka"))
->>>>>>> 3b75af30f0813bbb8b993aacbc70f5eb8148add6
     elif(b=="question"):
         line_bot_api.reply_message(
             event.reply_token,
