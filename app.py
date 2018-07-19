@@ -285,7 +285,7 @@ def yooka_template(event):
     else:
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text="Wah, keliatannya aku kurang paham. Coba cek Quick Menu dibawah."))
+            TextSendMessage(text="Aku ngga ngerti maksud kamu. Coba cek Quick Menu dibawah, mungkin bisa membantu."))
 
 """
 def feature_one(Event):
