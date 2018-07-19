@@ -147,8 +147,10 @@ def callback():
 
     return 'OK'
 
+@handler.
+
 @handler.add(MessageEvent, message=TextMessage)
-def usual_message(event):
+def yooka_template(event):
     a = event.message.text
     b = a.lower()
     if(b=="test"):
@@ -283,8 +285,16 @@ def usual_message(event):
     else:
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text="wah, sorry nih. Tampaknya soal itu aku belum paham. Coba cek Menu bantuan dibawah."))
+            TextSendMessage(text="Wah, keliatannya aku kurang paham. Coba cek Quick Menu dibawah."))
 
+"""
+def feature_one(Event):
+    a = Event.message.text
+    b = a.lower()
+    if(b = botresponse):
+        line_bot_api.rep
+        line_bot_api.push_message(to, TextSendMessage(text='Hello World!'))
+"""
 
 if __name__ == "__main__":
     app.run()
