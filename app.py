@@ -152,10 +152,10 @@ def callback():
     return 'OK'
 
 def yooka_richmenu(RichMenu):    
-    rich_menu_to_create = RichMenu(
+    line_bot_api.get_rich_menu = RichMenu(
         size=RichMenuSize(width=2500, height=843),
         selected=False,
-        name="Nice richmenu",
+        name="Yooka Quick Menu",
         chat_bar_text="Tap here",
         areas=[RichMenuArea(
             bounds=RichMenuBounds(x=0, y=0, width=2500, height=843),
