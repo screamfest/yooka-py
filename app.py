@@ -151,8 +151,8 @@ def callback():
 
     return 'OK'
 
-@handler.add(MessageEvent, message=TextMessage)
-def yooka_richmenu(RichMenu)    
+@handler.add(RichMenu)
+def yooka_richmenu(RichMenuResponse):    
     rich_menu_to_create = RichMenu(
         size=RichMenuSize(width=2500, height=843),
         selected=False,
@@ -165,10 +165,11 @@ def yooka_richmenu(RichMenu)
     rich_menu_id = line_bot_api.create_rich_menu(rich_menu=rich_menu_to_create)
     print(rich_menu_id)
 
+@handler.add(MessageEvent, message=TextMessage)
 def yooka_template(event):
     a = event.message.text
     b = a.lower()
-    if(b= botbuttons):
+    if(b == "test"):
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=a))
