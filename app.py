@@ -7,6 +7,8 @@ conn = psycopg2.connect(DATABASE_URL, sslmode='require')
 
 from flask import Flask, request, abort
 
+from linebot import models
+
 from linebot import (
     LineBotApi, WebhookHandler
 )
@@ -119,7 +121,6 @@ from linebot.models.template import (
     ImageCarouselTemplate,
     ImageCarouselColumn,
 )
-from database import botreply
 
 from database import keywords
 
