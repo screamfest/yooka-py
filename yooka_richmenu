@@ -1,0 +1,39 @@
+curl -v -X POST https://api.line.me/v2/bot/richmenu \
+  -H 'Authorization: Bearer {lV5dotbVQarTPp3UnIln+3DtG3L+RpDJOnYwfd4Hh/uFxGK3IPnR1zVSmEvGAiD+Fy/D9VxrVPu7q7pTNqcG2GBaE4WpDlZDCEL6vmNYbzbZnzc2fBpTCuACvjdpKkaYwQKStQX92jK0yUdKqN+FBQdB04t89/1O/w1cDnyilFU=}' \
+  -H 'Content-Type:application/json' \
+  -d \
+  '{
+  "size": {
+    "width": 2500,
+    "height": 1686
+  },
+  "selected": true,
+  "name": "Yooka Quick Menu",
+  "chatBarText": "Quick Menu",
+  "areas": [
+    {
+      "bounds": {
+        "x": 11,
+        "y": 28,
+        "width": 1232,
+        "height": 1634
+      },
+      "action": {
+        "type": "message",
+        "text": "Info PMB"
+      }
+    },
+    {
+      "bounds": {
+        "x": 1243,
+        "y": 21,
+        "width": 1243,
+        "height": 1646
+      },
+      "action": {
+        "type": "message",
+        "text": "Info Mahasiswa Aktif"
+      }
+    }
+  ]
+}'
