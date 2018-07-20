@@ -1,6 +1,5 @@
 import os
 import psycopg2
-import botbuttons
 
 DATABASE_URL = os.environ['DATABASE_URL']
 
@@ -122,6 +121,9 @@ from linebot.models.template import (
     ImageCarouselTemplate,
     ImageCarouselColumn,
 )
+from database import botreply
+
+from database import keywords
 
 app = Flask(__name__)
 
@@ -150,10 +152,23 @@ def callback():
     return 'OK'
 
 @handler.add(MessageEvent, message=TextMessage)
+def yooka_richmenu(RichMenu)    
+    rich_menu_to_create = RichMenu(
+        size=RichMenuSize(width=2500, height=843),
+        selected=False,
+        name="Nice richmenu",
+        chat_bar_text="Tap here",
+        areas=[RichMenuArea(
+            bounds=RichMenuBounds(x=0, y=0, width=2500, height=843),
+            action=URIAction(label='Go to line.me', uri='https://line.me'))]
+    )
+    rich_menu_id = line_bot_api.create_rich_menu(rich_menu=rich_menu_to_create)
+    print(rich_menu_id)
+
 def yooka_template(event):
     a = event.message.text
     b = a.lower()
-    if(b=="test"):
+    if(b= botbuttons):
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=a))
@@ -200,7 +215,7 @@ def yooka_template(event):
                 address='Jakarta Timur',
                 latitude=35.65910807942215,
                 longitude=139.70372892916203
-        )
+            )
         )
     elif(b=="konfirmasi"):
         line_bot_api.reply_message(
@@ -287,14 +302,6 @@ def yooka_template(event):
             event.reply_token,
             TextSendMessage(text="Aku ngga ngerti maksud kamu. Coba cek Quick Menu dibawah, mungkin bisa membantu."))
 
-"""
-def feature_one(Event):
-    a = Event.message.text
-    b = a.lower()
-    if(b = botresponse):
-        line_bot_api.rep
-        line_bot_api.push_message(to, TextSendMessage(text='Hello World!'))
-"""
 
 if __name__ == "__main__":
     app.run()
