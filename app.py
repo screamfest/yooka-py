@@ -151,8 +151,7 @@ def callback():
 
     return 'OK'
 
-@handler.add(RichMenu)
-def yooka_richmenu(RichMenuResponse):    
+def yooka_richmenu(RichMenu):    
     rich_menu_to_create = RichMenu(
         size=RichMenuSize(width=2500, height=843),
         selected=False,
