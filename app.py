@@ -1,7 +1,6 @@
 import os
 import psycopg2
 from database import botreply
-from database.botreply import yooka_template
 
 DATABASE_URL = os.environ['DATABASE_URL']
 
