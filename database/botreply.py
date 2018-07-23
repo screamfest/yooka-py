@@ -1,3 +1,5 @@
+from __future__ import unicode_literals
+
 # Keywords Dictionary
 EXPRESSION = {
     'thankyou': ['terima kasih', 'thx', ''],
@@ -45,8 +47,6 @@ DEFAULT_EXCUSES = [
         'aduh aku pusing baca chat kamu',
     ]
 
-
-from __future__ import unicode_literals
 import os
 import psycopg2
 import json
