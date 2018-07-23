@@ -21,11 +21,11 @@ from linebot.models.actions import (
     MessageAction,
     URIAction,
     DatetimePickerAction,
-    Action as TemplateAction,  # backward compatibility
-    PostbackAction as PostbackTemplateAction,  # backward compatibility
-    MessageAction as MessageTemplateAction,  # backward compatibility
-    URIAction as URITemplateAction,  # backward compatibility
-    DatetimePickerAction as DatetimePickerTemplateAction,  # backward compatibility
+    Action as TemplateAction,
+    PostbackAction as PostbackTemplateAction,
+    MessageAction as MessageTemplateAction,
+    URIAction as URITemplateAction,
+    DatetimePickerAction as DatetimePickerTemplateAction,
 )
 from linebot.models.base import (
     Base,
@@ -122,17 +122,13 @@ from linebot.models.template import (
     ImageCarouselColumn,
 )
 
-from database import keywords
-
 app = Flask(__name__)
 
-# get channel_secret and channel_access_token from your environment variable
+# get channel_secret and channel_access_token dari environment variable
+line_bot_api = LineBotApi('lV5dotbVQarTPp3UnIln+3DtG3L+RpDJOnYwfd4Hh/uFxGK3IPnR1zVSmEvGAiD+Fy/D9VxrVPu7q7pTNqcG2GBaE4WpDlZDCEL6vmNYbzbZnzc2fBpTCuACvjdpKkaYwQKStQX92jK0yUdKqN+FBQdB04t89/1O/w1cDnyilFU=') #channel_access_token
+handler = WebhookHandler('1891eb6bb7a1dc770e8ce73fb9ec22f0') #channel_secret
 
-
-line_bot_api = LineBotApi('lV5dotbVQarTPp3UnIln+3DtG3L+RpDJOnYwfd4Hh/uFxGK3IPnR1zVSmEvGAiD+Fy/D9VxrVPu7q7pTNqcG2GBaE4WpDlZDCEL6vmNYbzbZnzc2fBpTCuACvjdpKkaYwQKStQX92jK0yUdKqN+FBQdB04t89/1O/w1cDnyilFU=')
-handler = WebhookHandler('1891eb6bb7a1dc770e8ce73fb9ec22f0') #channel secret
-
-
+#webhook handler untuk melakukan koneksi ke LINE
 @app.route("/callback", methods=['POST'])
 def callback():
     # get X-Line-Signature header value
@@ -140,7 +136,7 @@ def callback():
 
     # get request body as text
     body = request.get_data(as_text=True)
-    app.logger.info("Request body: " + body)
+    #app.logger.info("Request body: " + body)
 
     # handle webhook body
     try:

@@ -3,9 +3,8 @@
 EXPRESSION = {
     'thankyou': ['terima kasih', 'thx', ''],
     'greet': ['hello', 'hi', 'hey'],
-    'goodbye': ['bye', 'farewell']
+    'goodbye': ['bye', 'farewell', 'dadah']
 }
-IGNORED_TAGS = ['img', 'a', 'br']
 
 DEFAULT_SWAPWORDS = {
         'lo':'kamu', 
