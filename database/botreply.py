@@ -175,7 +175,7 @@ line_bot_api = LineBotApi('lV5dotbVQarTPp3UnIln+3DtG3L+RpDJOnYwfd4Hh/uFxGK3IPnR1
 handler = WebhookHandler('1891eb6bb7a1dc770e8ce73fb9ec22f0') #channel_secret
 
 @handler.add(MessageEvent, message=TextMessage)
-    def handle_message(event):
+def handle_message(event):
         a = event.message.text
         b = a.lower()
         if(b == "test"):
