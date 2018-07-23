@@ -1,4 +1,4 @@
-import pymysql.cursors
+import pymysql.cursor
 talking = True
 prevres = ""
 while talking:
