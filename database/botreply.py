@@ -46,12 +46,15 @@ DEFAULT_EXCUSES = [
     ]
 
 
-import future
+from __future__ import unicode_literals
 import os
 import psycopg2
 import json
 import spacy
 import rasa_nlu
+from future.utils import with_metaclass
+from abc import ABCMeta
+from linebot.models import Base
 
 from linebot import api, exceptions, http_client, utils, webhook
 from linebot import models
