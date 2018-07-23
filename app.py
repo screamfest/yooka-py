@@ -1,6 +1,6 @@
 import os
 import psycopg2
-from database import botreply
+#from database import botreply
 
 DATABASE_URL = os.environ['DATABASE_URL']
 
@@ -40,6 +40,8 @@ def callback():
         abort(400)
 
     return 'OK'
+
+from database import botreply
 
 if __name__ == "__main__":
     app.run()
