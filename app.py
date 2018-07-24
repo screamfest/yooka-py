@@ -115,14 +115,16 @@ def handle_message(event):
                         )
                     ),
                     ImageCarouselColumn(
-                        image_url='https://example.com/item3.jpg',
+                        image_url='https://example.com/'
+                                'item4.jpg',
                         action=MessageAction(
                             label='Pengumuman Hasil Ujian Seleksi',
                             text='pengumuman ujian seleksi masuk unsada'
                         )
                     ),
                     ImageCarouselColumn(
-                        image_url='https://example.com/item3.jpg',
+                        image_url='https://example.com/'
+                                'item5.jpg',
                         action=MessageAction(
                             label='Lokasi UNSADA',
                             text='lokasi unsada'
