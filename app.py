@@ -114,7 +114,7 @@ def handle_message(event):
                     ImageCarouselColumn(
                         image_url='https://example.com/item4.jpg', #addimagehere
                         action=MessageAction(
-                            label='Hasil Seleksi',
+                            label='Hasil Ujian',
                             text='pengumuman ujian seleksi masuk unsada'
                         )
                     ),
