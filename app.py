@@ -4,7 +4,8 @@ import os
 import psycopg2
 import sys
 import tempfile
-import requests 
+import requests
+
 #from var import *
 from re import search
 from random import random
@@ -18,12 +19,10 @@ DATABASE_URL = os.environ['DATABASE_URL']
 
 conn = psycopg2.connect(DATABASE_URL, sslmode='require')
 
-from flask import Flask, request, abort
-
+from flask import (Flask, request, abort)
 from linebot import models
-
 from linebot import (
-    LineBotApi, WebhookHandler
+    LineBotApi, WebhookHandler,
 )
 from linebot.exceptions import (
     InvalidSignatureError
@@ -31,113 +30,18 @@ from linebot.exceptions import (
 #import models from linebot folder untuk aktivasi model message di dalam pengiriman pesan ke user
 
 from linebot.models import (
-    MessageEvent, TextMessage, TextSendMessage,
-)
-from linebot.models.actions import (
-    Action,
-    PostbackAction,
-    MessageAction,
-    URIAction,
-    DatetimePickerAction,
-    Action as TemplateAction,
-    PostbackAction as PostbackTemplateAction,
-    MessageAction as MessageTemplateAction,
-    URIAction as URITemplateAction,
-    DatetimePickerAction as DatetimePickerTemplateAction,
-)
-from linebot.models.base import (
-    Base,
-)
-from linebot.models.error import (
-    Error,
-    ErrorDetail,
-)
-from linebot.models.events import (
-    Event,
-    MessageEvent,
-    FollowEvent,
-    UnfollowEvent,
-    JoinEvent,
-    LeaveEvent,
-    PostbackEvent,
-    AccountLinkEvent,
-    BeaconEvent,
-    Postback,
-    Beacon,
-    Link,
-)
-from linebot.models.messages import (
-    Message,
-    TextMessage,
-    ImageMessage,
-    VideoMessage,
-    AudioMessage,
-    LocationMessage,
-    StickerMessage,
-    FileMessage,
-)
-from linebot.models.imagemap import (
-    ImagemapSendMessage,
-    BaseSize,
-    ImagemapAction,
-    URIImagemapAction,
-    MessageImagemapAction,
-    ImagemapArea,
-)
-from linebot.models.responses import (
-    Profile,
-    MemberIds,
-    Content,
-    RichMenuResponse,
-    Content as MessageContent,
-)
-from linebot.models.flex_message import (
-    FlexSendMessage,
-    FlexContainer,
-    BubbleContainer,
-    BubbleStyle,
-    BlockStyle,
-    CarouselContainer,
-    FlexComponent,
-    BoxComponent,
-    ButtonComponent,
-    FillerComponent,
-    IconComponent,
-    ImageComponent,
-    SeparatorComponent,
-    SpacerComponent,
-    TextComponent
-)
-from linebot.models.rich_menu import (
-    RichMenu,
-    RichMenuSize,
-    RichMenuArea,
-    RichMenuBounds,
-)
-from linebot.models.send_messages import (
-    SendMessage,
-    TextSendMessage,
-    ImageSendMessage,
-    VideoSendMessage,
-    AudioSendMessage,
-    LocationSendMessage,
-    StickerSendMessage,
-)
-from linebot.models.sources import (
-    Source,
-    SourceUser,
-    SourceGroup,
-    SourceRoom,
-)
-from linebot.models.template import (
-    TemplateSendMessage,
-    Template,
-    ButtonsTemplate,
-    ConfirmTemplate,
-    CarouselTemplate,
-    CarouselColumn,
-    ImageCarouselTemplate,
-    ImageCarouselColumn,
+    MessageEvent, TextMessage, TextSendMessage, 
+    Action, PostbackAction, MessageAction, URIAction, DatetimePickerAction, Action as TemplateAction, PostbackAction as PostbackTemplateAction, MessageAction as MessageTemplateAction, URIAction as URITemplateAction, DatetimePickerAction as DatetimePickerTemplateAction,
+    Base, Error, ErrorDetail, 
+    Event, FollowEvent, UnfollowEvent, JoinEvent, LeaveEvent, PostbackEvent, AccountLinkEvent, BeaconEvent, Postback, Beacon, Link, 
+    Message, TextMessage, ImageMessage, VideoMessage, AudioMessage, LocationMessage, StickerMessage, FileMessage, 
+    ImagemapSendMessage, BaseSize, ImagemapAction, URIImagemapAction, MessageImagemapAction, ImagemapArea, 
+    Profile, MemberIds, Content, RichMenuResponse, Content as MessageContent, 
+    FlexSendMessage, FlexContainer, BubbleContainer, BubbleStyle, BlockStyle, CarouselContainer, FlexComponent, BoxComponent, ButtonComponent, FillerComponent, IconComponent, ImageComponent, SeparatorComponent, SpacerComponent, TextComponent, 
+    TemplateSendMessage, Template, ButtonsTemplate, ConfirmTemplate, CarouselTemplate, CarouselColumn, ImageCarouselTemplate, ImageCarouselColumn, 
+    RichMenu, RichMenuSize, RichMenuArea, RichMenuBounds,
+    SendMessage, TextSendMessage, ImageSendMessage, VideoSendMessage, AudioSendMessage, LocationSendMessage, StickerSendMessage, 
+    Source, SourceUser, SourceGroup, SourceRoom,
 )
 
 app = Flask(__name__)
@@ -154,7 +58,7 @@ def callback():
 
     # get request body as text
     body = request.get_data(as_text=True)
-    app.logger.info("Request body: " + body)
+    """app.logger.info("Request body: " + body)"""
 
     # handle webhook body
     try:
@@ -168,10 +72,52 @@ def callback():
 def handle_message(event):
     a = event.message.text
     b = a.lower()
-    if(b == "test"):
+    bypass = event.reply_token
+    if(b == "admin say yes"):
         line_bot_api.reply_message(
-        event.reply_token,
-        TextSendMessage(text=a))
+        bypass, TextSendMessage(text=a + " Yooka say no!"))
+
+    #Info PMB-Tier1
+    elif(b=="info PMB"):
+        line_bot_api.reply_message(
+        event.reply_token, 
+            TemplateSendMessage(
+            alt_text='Informasi Penerimaan Mahasiswa Baru Universitas Darma Persada',
+            template=ImageCarouselTemplate(
+                columns=[
+                    ImageCarouselColumn(
+                        image_url='https://example.com/item1.jpg',
+                        action=MessageAction(
+                            label='Periode Seleksi',
+                            text='Periode seleksi mahasiswa baru UNSADA'
+                        )
+                    ),
+                    ImageCarouselColumn(
+                        image_url='https://example.com/item2.jpg',
+                        action=MessageAction(
+                            label='Daftar Fakultas & Jurusan',
+                            text='Daftar Fakultas & Jurusan di UNSADA'
+                        )
+                    ),
+                    ImageCarouselColumn(
+                        image_url='https://example.com/item2.jpg',
+                        action=MessageAction(
+                            label='Persyaratan Pendaftaran',
+                            text='Persyaratan Ujian'
+                        )
+                    ),
+                    ImageCarouselColumn(
+                        image_url='https://example.com/item2.jpg',
+                        action=MessageAction(
+                            label='Pengumuman Hasil Seleksi',
+                            text='Pengumuman Hasil Seleksi Ujian Masuk UNSADA'
+                        )
+                    )
+                ]
+            )
+            )
+        )
+
     elif(b=="image carousel"):
         line_bot_api.reply_message(
         event.reply_token, 
@@ -289,34 +235,58 @@ def handle_message(event):
             )
             )
         )
+    #Pertanyaan dasar
     elif(b=="siapa kamu"):
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text="Yooka"))
+            TextSendMessage(
+                text="Yooka"
+                )
+            )
+    
+    # 
     elif(b=="question"):
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text="answer"))
+
+    #kalo semuanya ngga cocok keluarkan fallback message
     else:
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text="Aku ngga ngerti maksud kamu. Coba cek Quick Menu dibawah, mungkin bisa membantu."))
 
-def yooka_message(event):
-    a = event.message.text
-    b = a.lower()
-    if(b == "hai"):
+
+# handle join event
+@handler.add(JoinEvent)
+def handle_join(event):
+    if event.source.type == 'group':
         line_bot_api.reply_message(
+            event.reply_token,[
+            TextSendMessage(text='Yo, saya Yooka!'),
+            TextSendMessage(text='Salam kenal!')
+            ])
+
+# handle add event
+@handler.add(LeaveEvent)
+def handle_leave():
+    """app.logger.info("Got leave event")"""
+
+# handle postback event
+@handler.add(PostbackEvent)
+def handle_postback(event):
+    if event.postback.data == 'ping':
+        line_bot_api.reply_message(
+            event.reply_token, TextSendMessage(text='pong'))
+
+# handle beacon event
+@handler.add(BeaconEvent)
+def handle_beacon(event):
+    line_bot_api.reply_message(
         event.reply_token,
-        TextSendMessage(text=a))
-    elif(b=="question"):
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text="answer"))
-    else:
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text="Aku ngga ngerti maksud kamu. Coba cek Quick Menu dibawah, mungkin bisa membantu."))
+        TextSendMessage(
+            text='Got beacon event. hwid={}, device_message(hex string)={}'.format(
+                event.beacon.hwid, event.beacon.dm)))
 
 if __name__ == "__main__":
     app.run()
