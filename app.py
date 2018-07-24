@@ -73,13 +73,12 @@ def handle_message(event):
     a = event.message.text
     b = a.lower()
     bypass = event.reply_token
-    if(b == "admin say yes"):
+    if(b=="admin say yes"):
         line_bot_api.reply_message(
         bypass, TextSendMessage(text=a + ", Yooka say no!"))
     #Info PMB-Tier1
     elif(b=="info pmb"):
-        line_bot_api.reply_message(
-        bypass, TemplateSendMessage(
+        line_bot_api.reply_message(bypass, TemplateSendMessage(
             alt_text='informasi PMB',
             template=ImageCarouselTemplate(
                 columns=[
@@ -113,7 +112,7 @@ def handle_message(event):
                     )
                 ]
             )
-            )
+        )
         )
 
     elif(b=="image carousel"):
