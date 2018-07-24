@@ -91,42 +91,37 @@ def handle_message(event):
             template=ImageCarouselTemplate(
                 columns=[
                     ImageCarouselColumn(
-                        image_url='https://example.com/'
-                                'item1.jpg',
+                        image_url='https://example.com/item1.jpg', #addimagehere
                         action=MessageAction(
-                            label='Periode PMB',
+                            label='Periode PMB', #label tidak boleh lebih dari 12 character
                             text='periode pmb unsada',
                         )
                     ),
                     ImageCarouselColumn(
-                        image_url='https://example.com/'
-                                'item2.jpg',
+                        image_url='https://example.com/item2.jpg', #addimagehere
                         action=MessageAction(
-                            label='Fakultas & Jurusan',
+                            label='Jurusan',
                             text='daftar fakultas & jurusan di unsada'
                         )
                     ),
                     ImageCarouselColumn(
-                        image_url='https://example.com/'
-                                'item3.jpg',
+                        image_url='https://example.com/item3.jpg', #addimagehere
                         action=MessageAction(
-                            label='persyaratan dan tata cara PMB',
+                            label='Tata Cara',
                             text='persyaratan seleksi masuk unsada'
                         )
                     ),
                     ImageCarouselColumn(
-                        image_url='https://example.com/'
-                                'item4.jpg',
+                        image_url='https://example.com/item4.jpg', #addimagehere
                         action=MessageAction(
-                            label='Pengumuman Hasil Ujian Seleksi',
+                            label='Hasil Seleksi',
                             text='pengumuman ujian seleksi masuk unsada'
                         )
                     ),
                     ImageCarouselColumn(
-                        image_url='https://example.com/'
-                                'item5.jpg',
+                        image_url='https://example.com/item5.jpg', #addimagehere
                         action=MessageAction(
-                            label='Lokasi UNSADA',
+                            label='Lokasi',
                             text='lokasi unsada'
                         )
                     )
