@@ -129,7 +129,7 @@ def handle_message(event):
             )
         )
         )
-
+    # tier 2 - info unsada
     elif(b=="image carousel"):
         line_bot_api.reply_message(
             event.reply_token, 
