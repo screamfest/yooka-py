@@ -14,7 +14,6 @@ from argparse import ArgumentParser
 import spacy
 import rasa_nlu
 import random
-
 DATABASE_URL = os.environ['DATABASE_URL']
 
 conn = psycopg2.connect(DATABASE_URL, sslmode='require')
@@ -27,8 +26,9 @@ from linebot import (
 from linebot.exceptions import (
     InvalidSignatureError
 )
-#import models from linebot folder untuk aktivasi model message di dalam pengiriman pesan ke user
+from yookaquickmenu import appquickmenu
 
+#import models from linebot folder untuk aktivasi model message di dalam pengiriman pesan ke user
 from linebot.models import (
     MessageEvent, TextMessage, TextSendMessage, 
     Action, PostbackAction, MessageAction, URIAction, DatetimePickerAction, Action as TemplateAction, PostbackAction as PostbackTemplateAction, MessageAction as MessageTemplateAction, URIAction as URITemplateAction, DatetimePickerAction as DatetimePickerTemplateAction,
@@ -193,7 +193,7 @@ def handle_message(event):
         line_bot_api.reply_message(
             event.reply_token, 
             ImagemapSendMessage(
-                base_url='http://tinypic.com/m/jza5bk/3', #addimagehere
+                base_url='https://example.com/richmenupict.jpg', #addimagehere
                 alt_text='daftar fakultas dan jurusan di unsada',
                 base_size=BaseSize(height=1040, width=1040),
                 actions=[
