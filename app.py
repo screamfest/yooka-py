@@ -82,37 +82,32 @@ def handle_message(event):
         line_bot_api.reply_message(
             event.reply_token, 
             TemplateSendMessage(
-                alt_text='image carousel text',
-                template=ImageCarouselTemplate(
-                    columns=[
-                        ImageCarouselColumn(
-                            image_url='https://example.com/item1.jpg',
-                            action=MessageAction(
-                                label='Periode Seleksi',
-                                text='Periode seleksi mahasiswa baru UNSADA'
-                            )
-                        ),
-                        ImageCarouselColumn(
-                            image_url='https://example.com/item2.jpg',
-                            action=MessageAction(
-                                label='Daftar Fakultas & Jurusan',
-                                text='Daftar Fakultas & Jurusan di UNSADA'
-                            )
-                        ),
-                        ImageCarouselColumn(
-                            image_url='https://example.com/item2.jpg',
-                            action=MessageAction(
-                                label='Persyaratan Pendaftaran',
-                                text='Persyaratan Ujian'
-                            )
-                        ),
-                        ImageCarouselColumn(
-                            image_url='https://example.com/item2.jpg',
-                            action=MessageAction(
-                                label='Pengumuman Hasil Seleksi',
-                                text='Pengumuman Hasil Seleksi Ujian Masuk UNSADA'
-                            )
+            alt_text='informasi pmb',
+            template=ImageCarouselTemplate(
+                columns=[
+                    ImageCarouselColumn(
+                        image_url='https://example.com/item1.jpg',
+                        action=PostbackAction(
+                            label='postback1',
+                            data='action=buy&itemid=1'
                         )
+                    ),
+                    ImageCarouselColumn(
+                        image_url='https://example.com'
+                                '/item2.jpg',
+                        action=MessageAction(
+                            label='message2',
+                            text='message text2'
+                        )
+                    ),
+                    ImageCarouselColumn(
+                        image_url='https://example.com/'
+                                'item3.jpg',
+                        action=URIAction(
+                            label='uri1',
+                            uri='https://example.com/1'
+                        )
+                    )
                 ]
             )
         )
@@ -120,7 +115,7 @@ def handle_message(event):
 
     elif(b=="image carousel"):
         line_bot_api.reply_message(
-        event.reply_token, 
+            event.reply_token, 
             TemplateSendMessage(
             alt_text='Image carousel template',
             template=ImageCarouselTemplate(
