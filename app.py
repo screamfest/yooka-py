@@ -1,6 +1,15 @@
+from __future__ import unicode_literals
+
 import os
 import psycopg2
-
+import sys
+import tempfile
+import requests 
+#from var import *
+from re import search
+from random import random
+from random import choice
+from argparse import ArgumentParser
 import spacy
 import rasa_nlu
 import random
