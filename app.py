@@ -87,9 +87,9 @@ def handle_message(event):
                 columns=[
                     ImageCarouselColumn(
                         image_url='https://example.com/item1.jpg',
-                        action=PostbackAction(
-                            label='postback1',
-                            data='action=buy&itemid=1'
+                        action=MessageAction(
+                            label='Periode PMB',
+                            text='periode pmb unsada'
                         )
                     ),
                     ImageCarouselColumn(
