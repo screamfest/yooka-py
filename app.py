@@ -72,7 +72,7 @@ def callback():
 def handle_message(event):
     a = event.message.text
     b = a.lower()
-    #tier 1 
+    ################ tier 1 - testing site
     if(b=="admin say yes"):
         line_bot_api.reply_message(
             event.reply_token, 
@@ -82,7 +82,7 @@ def handle_message(event):
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=a))
-    #tier 2 - info pmb
+    ################ tier 2 - info pmb
     elif(b=="info pmb"):
         line_bot_api.reply_message(
             event.reply_token, 
@@ -129,51 +129,74 @@ def handle_message(event):
             )
         )
         )
-    # tier 2 - info unsada
-    elif(b=="image carousel"):
+    ################ tier 2 - info unsada
+    elif(b=="info unsada"):
         line_bot_api.reply_message(
-            event.reply_token, 
+            event.reply_token,
             TemplateSendMessage(
-            alt_text='Image carousel template',
-            template=ImageCarouselTemplate(
-                columns=[
-                    ImageCarouselColumn(
-                        image_url='https://example.com/'
-                                'item1.jpg',
-                        action=PostbackAction(
-                            label='postback1',
-                            data='action=buy&itemid=1'
+            alt_text='Info Unsada',
+        template=CarouselTemplate(
+            columns=[
+                CarouselColumn(
+                    thumbnail_image_url='https://example.com/item1.jpg', #addimagehere
+                    title='Jadwal Kuliah',
+                    text='Informasi jadwal kuliah untuk Mahasiswa UNSADA',
+                    actions=[
+                        MessageAction(
+                            label='Lihat Jadwal',
+                            text='lihat jadwal kuliah'
+                        ),
+                        URIAction(
+                            label='Portal Unsada',
+                            uri='http://portal.unsada.ac.id'
                         )
-                    ),
-                    ImageCarouselColumn(
-                        image_url='https://example.com'
-                                '/item2.jpg',
-                        action=MessageAction(
-                            label='message2',
-                            text='message text2'
+                    ]
+                ),
+                CarouselColumn(
+                    thumbnail_image_url='https://example.com/item2.jpg',
+                    title='UTS',
+                    text='Informasi jadwal UTS untuk Mahasiswa UNSADA',
+                    actions=[
+                        MessageAction(
+                            label='Jadwal UTS',
+                            text='lihat jadwal UTS'
+                        ),
+                        MessageAction(
+                            label='Nilai UTS',
+                            text='lihat nilai UTS'
                         )
-                    ),
-                    ImageCarouselColumn(
-                        image_url='https://example.com/'
-                                'item3.jpg',
-                        action=URIAction(
-                            label='uri1',
-                            uri='https://example.com/1'
+                    ]
+                ),
+                CarouselColumn(
+                    thumbnail_image_url='https://example.com/item2.jpg',
+                    title='UAS',
+                    text='Informasi jadwal UAS untuk Mahasiswa UNSADA',
+                    actions=[
+                        MessageAction(
+                            label='Jadwal UAS',
+                            text='lihat jadwal UAS'
+                        ),
+                        MessageAction(
+                            label='Nilai UAS',
+                            text='lihat nilai UAS'
                         )
-                    )
-                ]
-            )
+                    ]
+                )
+            ]
         )
         )
-    #tier 3 - feedback
+    )
+    ################ tier 2 - info tambahan lainnya - NEXT DEVELOPMENT
+    
+    ################ tier 3 - feedback
     elif(b=="lokasi unsada"):
         line_bot_api.reply_message(
             event.reply_token, 
             LocationSendMessage(
                 title='Universitas Darma Persada',
                 address='Jakarta Timur',
-                latitude=35.65910807942215,
-                longitude=139.70372892916203
+                latitude=-6.230059,
+                longitude=106.924653
             )
         )
     elif(b=="konfirmasi"):
@@ -196,57 +219,6 @@ def handle_message(event):
                     ]
             )
         )
-        )
-    elif(b=="carousel"):
-        line_bot_api.reply_message(
-            event.reply_token,
-            TemplateSendMessage(
-            alt_text='Carousel template',
-        template=CarouselTemplate(
-            columns=[
-                CarouselColumn(
-                    thumbnail_image_url='https://example.com/item1.jpg',
-                    title='this is menu1',
-                    text='description1',
-                    actions=[
-                        PostbackAction(
-                            label='postback1',
-                            text='postback text1',
-                            data='action=buy&itemid=1'
-                        ),
-                        MessageAction(
-                            label='message1',
-                            text='message text1'
-                        ),
-                        URIAction(
-                            label='uri1',
-                            uri='http://example.com/1'
-                        )
-                    ]
-                ),
-                CarouselColumn(
-                    thumbnail_image_url='https://example.com/item2.jpg',
-                    title='this is menu2',
-                    text='description2',
-                    actions=[
-                        PostbackAction(
-                            label='postback2',
-                            text='postback text2',
-                            data='action=buy&itemid=2'
-                        ),
-                        MessageAction(
-                            label='message2',
-                            text='message text2'
-                        ),
-                        URIAction(
-                            label='uri2',
-                            uri='http://example.com/2'
-                        )
-                    ]
-                )
-            ]
-            )
-            )
         )
     #Pertanyaan dasar
     elif(b=="siapa kamu"):
