@@ -72,18 +72,17 @@ def callback():
 def handle_message(event):
     a = event.message.text
     b = a.lower()
-    bypass = event.reply_token
     if(b=="admin say yes"):
         line_bot_api.reply_message(
-            bypass, 
+            event.reply_token, 
             TextSendMessage(
                 text=a + ", Yooka say no!"))
     #Info PMB-Tier1
     elif(b=="info pmb"):
         line_bot_api.reply_message(
-            bypass, 
+            event.reply_token, 
             TemplateSendMessage(
-                alt_text='informasi pmb',
+                alt_text='image carousel text',
                 template=ImageCarouselTemplate(
                     columns=[
                         ImageCarouselColumn(
@@ -114,8 +113,8 @@ def handle_message(event):
                                 text='Pengumuman Hasil Seleksi Ujian Masuk UNSADA'
                             )
                         )
-                    ]
-                )
+                ]
+            )
         )
         )
 
