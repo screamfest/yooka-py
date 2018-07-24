@@ -72,12 +72,17 @@ def callback():
 def handle_message(event):
     a = event.message.text
     b = a.lower()
+    #tier 1 
     if(b=="admin say yes"):
         line_bot_api.reply_message(
             event.reply_token, 
             TextSendMessage(
                 text=a + ", Yooka say no!"))
-    #Info PMB-Tier1
+    elif(b=="test"):
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=a))
+    #tier 2 - info pmb
     elif(b=="info pmb"):
         line_bot_api.reply_message(
             event.reply_token, 
@@ -93,19 +98,31 @@ def handle_message(event):
                         )
                     ),
                     ImageCarouselColumn(
-                        image_url='https://example.com'
-                                '/item2.jpg',
+                        image_url='https://example.com/item2.jpg',
                         action=MessageAction(
-                            label='message2',
-                            text='message text2'
+                            label='Fakultas & Jurusan',
+                            text='daftar fakultas & jurusan di unsada'
                         )
                     ),
                     ImageCarouselColumn(
-                        image_url='https://example.com/'
-                                'item3.jpg',
+                        image_url='https://example.com/item3.jpg',
+                        action=MessageAction(
+                            label='persyaratan dan tata cara PMB',
+                            text='persyaratan seleksi masuk unsada'
+                        )
+                    ),
+                    ImageCarouselColumn(
+                        image_url='https://example.com/item3.jpg',
                         action=URIAction(
-                            label='uri1',
-                            uri='https://example.com/1'
+                            label='Pengumuman Hasil Ujian Seleksi',
+                            text='pengumuman ujian seleksi masuk unsada'
+                        )
+                    ),
+                    ImageCarouselColumn(
+                        image_url='https://example.com/item3.jpg',
+                        action=URIAction(
+                            label='Lokasi UNSADA',
+                            text='lokasi unsada'
                         )
                     )
                 ]
@@ -148,6 +165,7 @@ def handle_message(event):
             )
         )
         )
+    #tier 3 - feedback
     elif(b=="lokasi unsada"):
         line_bot_api.reply_message(
             event.reply_token, 
@@ -245,12 +263,6 @@ def handle_message(event):
                 text="CONNECTED!"
                 )
             )
-    # 
-    elif(b=="question"):
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text="answer"))
-
     #kalo semuanya ngga cocok keluarkan fallback message
     else:
         line_bot_api.reply_message(
