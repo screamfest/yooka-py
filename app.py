@@ -111,7 +111,7 @@ def handle_message(event):
                             text='persyaratan seleksi masuk unsada'
                         )
                     ),
-                    ImageCarouselColumn(
+                    """ImageCarouselColumn(
                         image_url='https://example.com/item3.jpg',
                         action=URIAction(
                             label='Pengumuman Hasil Ujian Seleksi',
@@ -123,7 +123,7 @@ def handle_message(event):
                         action=URIAction(
                             label='Lokasi UNSADA',
                             text='lokasi unsada'
-                        )
+                        )"""
                     )
                 ]
             )
