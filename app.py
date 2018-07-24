@@ -193,7 +193,7 @@ def handle_message(event):
         line_bot_api.reply_message(
             event.reply_token, 
             ImagemapSendMessage(
-                base_url='https://drive.google.com/open?id=1FzSb4UBUkXWG2vN0gq6tBvR3RU7PYEV4', #addimagehere
+                base_url='http://tinypic.com/m/jza5bk/3', #addimagehere
                 alt_text='daftar fakultas dan jurusan di unsada',
                 base_size=BaseSize(height=1040, width=1040),
                 actions=[
