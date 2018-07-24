@@ -10,13 +10,16 @@ from future.utils import with_metaclass
 from abc import ABCMeta
 from linebot.models import Base
 
-from linebot import api, exceptions, http_client, utils, webhook
-from linebot import models
+from flask import Flask, request, abort
+
 from linebot import (
     LineBotApi, WebhookHandler
 )
 from linebot.exceptions import (
     InvalidSignatureError
+)
+from linebot.models import (
+    MessageEvent, TextMessage, TextSendMessage,
 )
 from linebot.models.actions import (
     Action,
@@ -125,8 +128,11 @@ from linebot.models.template import (
     ImageCarouselColumn,
 )
 
-line_bot_api = LineBotApi('lV5dotbVQarTPp3UnIln+3DtG3L+RpDJOnYwfd4Hh/uFxGK3IPnR1zVSmEvGAiD+Fy/D9VxrVPu7q7pTNqcG2GBaE4WpDlZDCEL6vmNYbzbZnzc2fBpTCuACvjdpKkaYwQKStQX92jK0yUdKqN+FBQdB04t89/1O/w1cDnyilFU=') #channel_access_token
-handler = WebhookHandler('1891eb6bb7a1dc770e8ce73fb9ec22f0') #channel_secret
+from linebot import api, exceptions, http_client, utils, webhook
+from linebot import models
+
+line_bot_api = LineBotApi('SBPEWYuYoFURRu8csRutLh81hb6/kZKdZJW7/nsKl/ejHOztWSqyocl65dQQ0blqFy/D9VxrVPu7q7pTNqcG2GBaE4WpDlZDCEL6vmNYbzZWS880cmof2VQV+yXzQOGQCdXX3W8FiG6J8KdjI9KxLQdB04t89/1O/w1cDnyilFU=') #channel_access_token
+handler = WebhookHandler('8c1db447eeab98cf91ba66189530563b') #channel_secret
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
@@ -265,50 +271,3 @@ def handle_message(event):
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text="Aku ngga ngerti maksud kamu. Coba cek Quick Menu dibawah, mungkin bisa membantu."))
-
-# Keywords Dictionary
-EXPRESSION = {
-    'thankyou': ['terima kasih', 'thx', ''],
-    'greet': ['hello', 'hi', 'hey'],
-    'goodbye': ['bye', 'farewell', 'dadah']
-}
-
-DEFAULT_SWAPWORDS = {
-        'lo':'kamu', 
-        'loe':'kamu', 
-        'lu':'kamu', 
-        'ente':'kamu', 
-        'elu':'kamu',
-        'you':'kamu',
-        'yu':'kamu', 
-        'situ':'kamu', 
-        'u':'kamu', 
-        'i':'aku', 
-        'gue':'aku', 
-        'gw':'aku', 
-        'gwe':'aku', 
-        'gua':'aku',
-        'wa':'aku',
-        'gwa':'aku',
-        'ue':'aku',
-        'gout':'aku',
-    }
-
-DEFAULT_EXCUSES = [
-        'wah, aku ngga ngerti',
-        'suka suka u',
-        'ampun, saya belum ngerti soal ini. ngomong yang lain aja ya.',
-        'wah, sebentar ya. kebelet pipis.',
-        'ah masa',
-        'hahahahaha',
-        'ora paham maksudmu',
-        'gak ngerti. tolong pencerahannya',
-        'mantap gan',
-        'aduh ngga ngerti, coba pakai bahasa yang lebih mudah dimengerti',
-        'jangan disingkat-singkat dong, bingung bacanya',
-        'maaf, ini chatnya pakai Bahasa Indonesia apa bahasa Rusia :p',
-        'asli ngga ngerti',
-        'oh gitu ya, tapi sebenernya aku ngga ngerti',
-        'wkwkwk',
-        'aduh aku pusing baca chat kamu',
-    ]
