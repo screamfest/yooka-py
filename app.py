@@ -101,7 +101,7 @@ def handle_message(event):
                         image_url='https://example.com/item2.jpg', #addimagehere
                         action=MessageAction(
                             label='Jurusan',
-                            text='daftar fakultas & jurusan di unsada'
+                            text='daftar fakultas dan jurusan di unsada'
                         )
                     ),
                     ImageCarouselColumn(
@@ -153,7 +153,7 @@ def handle_message(event):
                     ]
                 ),
                 CarouselColumn(
-                    thumbnail_image_url='https://example.com/item2.jpg',
+                    thumbnail_image_url='https://example.com/item2.jpg', #addimagehere
                     title='UTS',
                     text='Informasi jadwal UTS untuk Mahasiswa UNSADA',
                     actions=[
@@ -168,7 +168,7 @@ def handle_message(event):
                     ]
                 ),
                 CarouselColumn(
-                    thumbnail_image_url='https://example.com/item2.jpg',
+                    thumbnail_image_url='https://example.com/item2.jpg', #addimagehere
                     title='UAS',
                     text='Informasi jadwal UAS untuk Mahasiswa UNSADA',
                     actions=[
@@ -189,6 +189,29 @@ def handle_message(event):
     ################ tier 2 - info tambahan lainnya - NEXT DEVELOPMENT
     
     ################ tier 3 - feedback
+    elif(b=="daftar fakultas dan jurusan di unsada"):
+        line_bot_api.reply_message(
+            event.reply_token, 
+            ImagemapSendMessage(
+                base_url='https://example.com/base',
+                alt_text='daftar fakultas dan jurusan di unsada',
+                base_size=BaseSize(height=1040, width=1040),
+                actions=[
+                    URIImagemapAction(
+                        link_uri='https://example.com/',
+                        area=ImagemapArea(
+                            x=0, y=0, width=520, height=1040
+                        )
+                    ),
+                    MessageImagemapAction(
+                        text='hello',
+                        area=ImagemapArea(
+                            x=520, y=0, width=520, height=1040
+                        )
+                    )
+                ]
+        )
+    )
     elif(b=="lokasi unsada"):
         line_bot_api.reply_message(
             event.reply_token, 
