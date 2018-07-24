@@ -65,7 +65,7 @@ quickm.add_area(0, 843, 1250, 843, "postback", "data1=from_richmenu&data2=as_pos
 quickm.add_area(1250, 843, 1250, 843, "postback", ["data3=from_richmenu_with&data4=message_text", "ポストバックのメッセージ"])
 
 # Register
-res = quickman.register(quickm, "/Users/kukuhpradity/Desktop/chatbot/yooka-mac/database/picture/Yooka_by_Zappmi.png")
+res = quickman.register(quickm, "/database/picture/Yooka_by_Zappmi.png")
 richmenu_id = res["richMenuId"]
 print("Registered as " + richmenu_id)
 
