@@ -193,25 +193,37 @@ def handle_message(event):
         line_bot_api.reply_message(
             event.reply_token, 
             ImagemapSendMessage(
-                base_url='https://example.com/base',
+                base_url='https://drive.google.com/open?id=1FzSb4UBUkXWG2vN0gq6tBvR3RU7PYEV4', #addimagehere
                 alt_text='daftar fakultas dan jurusan di unsada',
                 base_size=BaseSize(height=1040, width=1040),
                 actions=[
-                    URIImagemapAction(
-                        link_uri='https://example.com/',
+                    MessageImagemapAction(
+                        text='Fakultas Sastra',
                         area=ImagemapArea(
                             x=0, y=0, width=520, height=1040
                         )
                     ),
                     MessageImagemapAction(
-                        text='hello',
+                        text='Fakultas Teknik',
                         area=ImagemapArea(
                             x=520, y=0, width=520, height=1040
                         )
+                    ),
+                    MessageImagemapAction(
+                        text='Fakultas Ekonomi',
+                        area=ImagemapArea(
+                            x=0, y=520, width=520, height=1040
+                        )
+                    ),
+                    MessageImagemapAction(
+                        text='Fakultas Teknik Kelautan',
+                        area=ImagemapArea(
+                            x=520, y=520, width=520, height=1040
+                        )
                     )
                 ]
+            )
         )
-    )
     elif(b=="lokasi unsada"):
         line_bot_api.reply_message(
             event.reply_token, 
