@@ -74,37 +74,36 @@ def handle_message(event):
     b = a.lower()
     bypass = event.reply_token
     if(b=="admin say yes"):
-        line_bot_api.reply_message(
-        bypass, TextSendMessage(text=a + ", Yooka say no!"))
+        line_bot_api.reply_message(bypass, TextSendMessage(text=a + ", Yooka say no!"))
     #Info PMB-Tier1
     elif(b=="info pmb"):
         line_bot_api.reply_message(bypass, TemplateSendMessage(
-            alt_text='informasi PMB',
+            alt_text='ImageCarouselTemplate',
             template=ImageCarouselTemplate(
                 columns=[
                     ImageCarouselColumn(
-                        image_url='https://example.com/item1.jpg',  #addimagehere
+                        image_url='https://example.com/item1.jpg',
                         action=MessageAction(
                             label='Periode Seleksi',
                             text='Periode seleksi mahasiswa baru UNSADA'
                         )
                     ),
                     ImageCarouselColumn(
-                        image_url='https://example.com/item2.jpg',  #addimagehere
+                        image_url='https://example.com/item2.jpg',
                         action=MessageAction(
                             label='Daftar Fakultas & Jurusan',
                             text='Daftar Fakultas & Jurusan di UNSADA'
                         )
                     ),
                     ImageCarouselColumn(
-                        image_url='https://example.com/item2.jpg',  #addimagehere
+                        image_url='https://example.com/item2.jpg',
                         action=MessageAction(
                             label='Persyaratan Pendaftaran',
                             text='Persyaratan Ujian'
                         )
                     ),
                     ImageCarouselColumn(
-                        image_url='https://example.com/item2.jpg',  #addimagehere
+                        image_url='https://example.com/item2.jpg',
                         action=MessageAction(
                             label='Pengumuman Hasil Seleksi',
                             text='Pengumuman Hasil Seleksi Ujian Masuk UNSADA'
