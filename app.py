@@ -19,16 +19,18 @@ DATABASE_URL = os.environ['DATABASE_URL']
 conn = psycopg2.connect(DATABASE_URL, sslmode='require')
 
 from flask import (Flask, request, abort)
-from linebot import models
 from linebot import (
     LineBotApi, WebhookHandler,
 )
 from linebot.exceptions import (
     InvalidSignatureError
 )
-from yookaquickmenu import appquickmenu
 
 #import models from linebot folder untuk aktivasi model message di dalam pengiriman pesan ke user
+from quickmenu import (
+    QuickMenu, QuickMenuManager
+)
+from linebot import models
 from linebot.models import (
     MessageEvent, TextMessage, TextSendMessage, 
     Action, PostbackAction, MessageAction, URIAction, DatetimePickerAction, Action as TemplateAction, PostbackAction as PostbackTemplateAction, MessageAction as MessageTemplateAction, URIAction as URITemplateAction, DatetimePickerAction as DatetimePickerTemplateAction,
@@ -50,7 +52,32 @@ app = Flask(__name__)
 line_bot_api = LineBotApi('SBPEWYuYoFURRu8csRutLh81hb6/kZKdZJW7/nsKl/ejHOztWSqyocl65dQQ0blqFy/D9VxrVPu7q7pTNqcG2GBaE4WpDlZDCEL6vmNYbzZWS880cmof2VQV+yXzQOGQCdXX3W8FiG6J8KdjI9KxLQdB04t89/1O/w1cDnyilFU=') #channel_access_token
 handler = WebhookHandler('8c1db447eeab98cf91ba66189530563b') #channel_secret
 
-#webhook handler untuk melakukan koneksi ke LINE
+# Setup RichMenuManager
+channel_access_token = "SBPEWYuYoFURRu8csRutLh81hb6/kZKdZJW7/nsKl/ejHOztWSqyocl65dQQ0blqFy/D9VxrVPu7q7pTNqcG2GBaE4WpDlZDCEL6vmNYbzZWS880cmof2VQV+yXzQOGQCdXX3W8FiG6J8KdjI9KxLQdB04t89/1O/w1cDnyilFU="
+quickman = QuickMenuManager(channel_access_token)
+
+#####SETUP YOOKA QUICK MENU
+# Setup RichMenu to register
+quickm = QuickMenu(name="Quick Menu", chat_bar_text="Open this menu")
+quickm.add_area(0, 0, 1250, 843, "message", "テキストメッセージ")
+quickm.add_area(1250, 0, 1250, 843, "uri", "http://imoutobot.com")
+quickm.add_area(0, 843, 1250, 843, "postback", "data1=from_richmenu&data2=as_postback")
+quickm.add_area(1250, 843, 1250, 843, "postback", ["data3=from_richmenu_with&data4=message_text", "ポストバックのメッセージ"])
+
+# Register
+res = quickman.register(quickm, "/path/to/menu.png")
+richmenu_id = res["richMenuId"]
+print("Registered as " + richmenu_id)
+
+# Apply to user
+user_id = "LINE_MID_TO_APPLY"
+quickman.apply(user_id, richmenu_id)
+
+# Check
+res = quickman.get_applied_menu(user_id)
+print(user_id  + ":" + res["richMenuId"])
+
+################webhook handler untuk melakukan koneksi ke LINE
 @app.route("/callback", methods=['POST'])
 def callback():
     # get X-Line-Signature header value
