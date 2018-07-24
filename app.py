@@ -91,40 +91,43 @@ def handle_message(event):
             template=ImageCarouselTemplate(
                 columns=[
                     ImageCarouselColumn(
-                        image_url='https://example.com/item1.jpg',
+                        image_url='https://example.com/'
+                                'item1.jpg',
                         action=MessageAction(
                             label='Periode PMB',
-                            text='periode pmb unsada'
+                            text='periode pmb unsada',
                         )
                     ),
                     ImageCarouselColumn(
-                        image_url='https://example.com/item2.jpg',
+                        image_url='https://example.com/'
+                                'item2.jpg',
                         action=MessageAction(
                             label='Fakultas & Jurusan',
                             text='daftar fakultas & jurusan di unsada'
                         )
                     ),
                     ImageCarouselColumn(
-                        image_url='https://example.com/item3.jpg',
+                        image_url='https://example.com/'
+                                'item3.jpg',
                         action=MessageAction(
                             label='persyaratan dan tata cara PMB',
                             text='persyaratan seleksi masuk unsada'
                         )
                     ),
-                    """ImageCarouselColumn(
+                    ImageCarouselColumn(
                         image_url='https://example.com/item3.jpg',
-                        action=URIAction(
+                        action=MessageAction(
                             label='Pengumuman Hasil Ujian Seleksi',
                             text='pengumuman ujian seleksi masuk unsada'
                         )
                     ),
                     ImageCarouselColumn(
                         image_url='https://example.com/item3.jpg',
-                        action=URIAction(
+                        action=MessageAction(
                             label='Lokasi UNSADA',
                             text='lokasi unsada'
                         )
-                    )"""
+                    )
                 ]
             )
         )
