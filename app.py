@@ -80,7 +80,7 @@ def handle_message(event):
     elif(b=="info pmb"):
         line_bot_api.reply_message(
         bypass, TemplateSendMessage(
-            alt_text='INFO PMB',
+            alt_text='informasi PMB',
             template=ImageCarouselTemplate(
                 columns=[
                     ImageCarouselColumn(
