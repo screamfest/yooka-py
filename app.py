@@ -65,7 +65,7 @@ quickm.add_area(0, 843, 1250, 843, "postback", "data1=from_richmenu&data2=as_pos
 quickm.add_area(1250, 843, 1250, 843, "postback", ["data3=from_richmenu_with&data4=message_text", "ポストバックのメッセージ"])
 
 # Register
-res = quickman.register(quickm, "https://i.imgur.com/lTT9Axb.png")
+res = quickman.register(quickm, "https://imgur.com/lTT9Axb") #imageline or image direct link?
 richmenu_id = res["richMenuId"]
 print("Registered as " + richmenu_id)
 
@@ -75,7 +75,7 @@ quickman.apply(user_id, richmenu_id)
 
 # Check
 res = quickman.get_applied_menu(user_id)
-print(user_id  + ":" + res["richMenuId"])
+"""print(user_id  + ":" + res["richMenuId"])"""
 
 ################webhook handler untuk melakukan koneksi ke LINE
 @app.route("/callback", methods=['POST'])
