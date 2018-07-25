@@ -49,11 +49,11 @@ from quickmenu import (
 app = Flask(__name__)
 
 # get channel_secret and channel_access_token dari environment variable
-line_bot_api = LineBotApi('SBPEWYuYoFURRu8csRutLh81hb6/kZKdZJW7/nsKl/ejHOztWSqyocl65dQQ0blqFy/D9VxrVPu7q7pTNqcG2GBaE4WpDlZDCEL6vmNYbzZWS880cmof2VQV+yXzQOGQCdXX3W8FiG6J8KdjI9KxLQdB04t89/1O/w1cDnyilFU=') #channel_access_token
+channel_access_token = "SBPEWYuYoFURRu8csRutLh81hb6/kZKdZJW7/nsKl/ejHOztWSqyocl65dQQ0blqFy/D9VxrVPu7q7pTNqcG2GBaE4WpDlZDCEL6vmNYbzZWS880cmof2VQV+yXzQOGQCdXX3W8FiG6J8KdjI9KxLQdB04t89/1O/w1cDnyilFU="
+line_bot_api = LineBotApi(channel_access_token) #channel_access_token
 handler = WebhookHandler('8c1db447eeab98cf91ba66189530563b') #channel_secret
 
 # Setup RichMenuManager
-channel_access_token = "SBPEWYuYoFURRu8csRutLh81hb6/kZKdZJW7/nsKl/ejHOztWSqyocl65dQQ0blqFy/D9VxrVPu7q7pTNqcG2GBaE4WpDlZDCEL6vmNYbzZWS880cmof2VQV+yXzQOGQCdXX3W8FiG6J8KdjI9KxLQdB04t89/1O/w1cDnyilFU="
 quickman = QuickMenuManager(channel_access_token)
 
 ################webhook handler untuk melakukan koneksi ke LINE
