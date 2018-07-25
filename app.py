@@ -56,6 +56,24 @@ handler = WebhookHandler('8c1db447eeab98cf91ba66189530563b') #channel_secret
 channel_access_token = "SBPEWYuYoFURRu8csRutLh81hb6/kZKdZJW7/nsKl/ejHOztWSqyocl65dQQ0blqFy/D9VxrVPu7q7pTNqcG2GBaE4WpDlZDCEL6vmNYbzZWS880cmof2VQV+yXzQOGQCdXX3W8FiG6J8KdjI9KxLQdB04t89/1O/w1cDnyilFU="
 quickman = QuickMenuManager(channel_access_token)
 
+################webhook handler untuk melakukan koneksi ke LINE
+@app.route("/callback", methods=['POST'])
+def callback():
+    # get X-Line-Signature header value
+    signature = request.headers['X-Line-Signature']
+
+    # get request body as text
+    body = request.get_data(as_text=True)
+    """app.logger.info("Request body: " + body)"""
+
+    # handle webhook body
+    try:
+        handler.handle(body, signature)
+    except InvalidSignatureError:
+        abort(400)
+
+    return 'OK'
+
 #####SETUP YOOKA QUICK MENU
 # Setup RichMenu to register
 quickm = QuickMenu(name="Quick Menu", chat_bar_text="test")
@@ -76,24 +94,6 @@ quickman.apply(user_id, richmenu_id)
 # Check
 res = quickman.get_applied_menu(user_id)
 """print(user_id  + ":" + res["richMenuId"])"""
-
-################webhook handler untuk melakukan koneksi ke LINE
-@app.route("/callback", methods=['POST'])
-def callback():
-    # get X-Line-Signature header value
-    signature = request.headers['X-Line-Signature']
-
-    # get request body as text
-    body = request.get_data(as_text=True)
-    """app.logger.info("Request body: " + body)"""
-
-    # handle webhook body
-    try:
-        handler.handle(body, signature)
-    except InvalidSignatureError:
-        abort(400)
-
-    return 'OK'
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
