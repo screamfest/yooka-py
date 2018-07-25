@@ -192,17 +192,8 @@ def handle_message(event):
     ################ tier 2 - About Yooka
     elif(b=="more info about yooka"):
         line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(
-                text="Aku Yooka. Mahasiswa Teknik Informatika di Universitas Darma Persada"))
-        line_bot_api.reply_message(    
-            event.reply_token,
-            TextSendMessage(text="Untuk menambahkan teman bisa search id aku nih @oiw3246b, atau scan QR Code dibawah ini"),
-            ImageSendMessage(
-                original_content_url='https://example.com/original.jpg',
-                preview_image_url='https://example.com/preview.jpg'
-            ),
-            TextSendMessage(text="thank you!")
+            event.reply_token, 
+            TextSendMessage(text="Aku Yooka.\nMahasiswa Teknik Informatika di Universitas Darma Persada.\nUntuk menambahkan teman bisa search id aku nih @oiw3246b.\nThank you!")
         )
     ################ tier 2 - Get me more!
     elif(b=="more info about unsada"):
