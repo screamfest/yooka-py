@@ -250,7 +250,7 @@ def handle_message(event):
         line_bot_api.reply_message(
             event.reply_token, 
             ImagemapSendMessage(
-                base_url='https://imgur.com/CwKQWdb', #addimagehere 
+                base_url='https://i.imgur.com/CwKQWdb.jpg', #addimagehere 
                 alt_text='daftar fakultas dan jurusan di unsada',
                 base_size=BaseSize(height=1040, width=1040),
                 actions=[
