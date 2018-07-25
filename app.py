@@ -42,12 +42,11 @@ from linebot.models import (
     SendMessage, TextSendMessage, ImageSendMessage, VideoSendMessage, AudioSendMessage, LocationSendMessage, StickerSendMessage, 
     Source, SourceUser, SourceGroup, SourceRoom,
 )
-from quickmenu import (
+"""from quickmenu import (
     QuickMenu, QuickMenuManager
-)
+)"""
 
 app = Flask(__name__)
-
 # get channel_secret and channel_access_token dari environment variable
 channel_access_token = "SBPEWYuYoFURRu8csRutLh81hb6/kZKdZJW7/nsKl/ejHOztWSqyocl65dQQ0blqFy/D9VxrVPu7q7pTNqcG2GBaE4WpDlZDCEL6vmNYbzZWS880cmof2VQV+yXzQOGQCdXX3W8FiG6J8KdjI9KxLQdB04t89/1O/w1cDnyilFU="
 line_bot_api = LineBotApi(channel_access_token) #channel_access_token
@@ -72,44 +71,20 @@ def callback():
 
     return 'OK'
 
-#####SETUP YOOKA QUICK MENU
-def Yooka_quickmenu(RichMenu):
-    # Setup RichMenuManager
-    quickman = QuickMenuManager(channel_access_token)
-        # Setup RichMenu to register
-    quickm = QuickMenu(name="Quick Menu", chat_bar_text="test")
-    quickm.add_area(0, 0, 1250, 843, "message", "テキストメッセージ")
-    quickm.add_area(1250, 0, 1250, 843, "uri", "http://imoutobot.com")
-    quickm.add_area(0, 843, 1250, 843, "postback", "data1=from_richmenu&data2=as_postback")
-    quickm.add_area(1250, 843, 1250, 843, "postback", ["data3=from_richmenu_with&data4=message_text", "ポストバックのメッセージ"])
-
-    # Register
-    res = quickman.register(quickm, "https://imgur.com/lTT9Axb") #imageline or image direct link?
-    richmenu_id = res["richMenuId"]
-    print("Registered as " + richmenu_id)
-
-    # Apply to user
-    user_id = "LINE_MID_TO_APPLY"
-    quickman.apply(user_id, richmenu_id)
-
-    # Check
-    res = quickman.get_applied_menu(user_id)
-    print(user_id  + ":" + res["richMenuId"])
-
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     a = event.message.text
     b = a.lower()
     ################ tier 1 - testing site
-    if(b=="admin say yes"):
+    if(b=="test"):
         line_bot_api.reply_message(
             event.reply_token, 
             TextSendMessage(
-                text=a + ", Yooka say no!"))
-    elif(b=="test"):
+                text=a))
+    elif(b=="admin say yes"):
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text=a))
+            TextSendMessage(text=a + ", Yooka say no!"))
     ################ tier 2 - info pmb
     elif(b=="info pmb"):
         line_bot_api.reply_message(
@@ -163,7 +138,7 @@ def handle_message(event):
             event.reply_token,
             TemplateSendMessage(
             alt_text='Info Unsada',
-        template=CarouselTemplate(
+            template=CarouselTemplate(
             columns=[
                 CarouselColumn(
                     thumbnail_image_url='https://example.com/item1.jpg', #addimagehere
@@ -214,7 +189,58 @@ def handle_message(event):
         )
         )
     )
-    ################ tier 2 - info tambahan lainnya - NEXT DEVELOPMENT
+    ################ tier 2 - About Yooka
+    elif(b=="more info about yooka"):
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text="Aku Yooka"),
+            TextSendMessage(text="Mahasiswa Teknik Informatika di Universitas Darma Persada")
+                )
+    ################ tier 2 - Get me more!
+    elif(b=="more info about unsada"):
+        line_bot_api.reply_message(
+            event.reply_token,
+            TemplateSendMessage(
+            alt_text='others info about unsada',
+            template=CarouselTemplate(
+                columns=[
+                    CarouselColumn(
+                        thumbnail_image_url='https://example.com/item1.jpg', #addimagehere 1024px max
+                        title='Info UKM',
+                        text='Informasi Unit Kegiatan Mahasiswa di UNSADA',
+                        actions=[
+                            MessageAction(
+                                label='See More',
+                                text='lihat daftar ukm di unsada'
+                            )
+                        ]
+                    ),
+                    CarouselColumn(
+                        thumbnail_image_url='https://example.com/item2.jpg', #addimagehere
+                        title='UNSADA Events',
+                        text='cari info event di UNSADA disini!',
+                        actions=[
+                            MessageAction(
+                                label='See More',
+                                text='lihat daftar event di unsada'
+                            )
+                        ]
+                    ),
+                    CarouselColumn(
+                        thumbnail_image_url='https://example.com/item2.jpg', #addimagehere
+                        title='Info Beasiswa',
+                        text='Informasi Beasiswa untuk mahasiswa UNSADA',
+                        actions=[
+                            MessageAction(
+                                label='See More',
+                                text='lihat daftar beasiswa di unsada'
+                            )
+                        ]
+                    )
+                ]
+            )
+            )
+        )
     
     ################ tier 3 - feedback
     elif(b=="daftar fakultas dan jurusan di unsada"):

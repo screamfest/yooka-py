@@ -1,4 +1,5 @@
-""" Rich Menu Manager for Line Messaging API """
+""" 
+Rich Menu Manager for Line Messaging API 
 import json
 import requests
 
@@ -66,7 +67,6 @@ class QuickMenuManager:
         url = "https://api.line.me/v2/bot/richmenu/%s" % richmenu_id
         return requests.delete(url, headers=self.headers, verify=self.verify).json()
 
-
     def remove_all(self):
         menus = self.get_list()
         for m in menus["richmenus"]:
@@ -83,3 +83,4 @@ class QuickMenuManager:
     def get_applied_menu(self, user_id):
         url = "https://api.line.me/v2/bot/user/%s/richmenu" % user_id
         return requests.get(url, headers=self.headers, verify=self.verify).json()
+"""
