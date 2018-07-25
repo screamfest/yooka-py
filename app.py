@@ -27,9 +27,6 @@ from linebot.exceptions import (
 )
 
 #import models from linebot folder untuk aktivasi model message di dalam pengiriman pesan ke user
-from quickmenu import (
-    QuickMenu, QuickMenuManager
-)
 from linebot import models
 from linebot.models import (
     MessageEvent, TextMessage, TextSendMessage, 
@@ -45,6 +42,9 @@ from linebot.models import (
     SendMessage, TextSendMessage, ImageSendMessage, VideoSendMessage, AudioSendMessage, LocationSendMessage, StickerSendMessage, 
     Source, SourceUser, SourceGroup, SourceRoom,
 )
+from quickmenu import (
+    QuickMenu, QuickMenuManager
+)
 
 app = Flask(__name__)
 
@@ -58,7 +58,7 @@ quickman = QuickMenuManager(channel_access_token)
 
 #####SETUP YOOKA QUICK MENU
 # Setup RichMenu to register
-quickm = QuickMenu(name="Quick Menu", chat_bar_text="Open this menu")
+quickm = QuickMenu(name="Quick Menu", chat_bar_text="test")
 quickm.add_area(0, 0, 1250, 843, "message", "テキストメッセージ")
 quickm.add_area(1250, 0, 1250, 843, "uri", "http://imoutobot.com")
 quickm.add_area(0, 843, 1250, 843, "postback", "data1=from_richmenu&data2=as_postback")
