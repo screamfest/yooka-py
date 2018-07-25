@@ -53,8 +53,6 @@ channel_access_token = "SBPEWYuYoFURRu8csRutLh81hb6/kZKdZJW7/nsKl/ejHOztWSqyocl6
 line_bot_api = LineBotApi(channel_access_token) #channel_access_token
 handler = WebhookHandler('8c1db447eeab98cf91ba66189530563b') #channel_secret
 
-# Setup RichMenuManager
-quickman = QuickMenuManager(channel_access_token)
 
 ################webhook handler untuk melakukan koneksi ke LINE
 @app.route("/callback", methods=['POST'])
@@ -76,7 +74,9 @@ def callback():
 
 #####SETUP YOOKA QUICK MENU
 def Yooka_quickmenu(RichMenu):
-# Setup RichMenu to register
+    # Setup RichMenuManager
+    quickman = QuickMenuManager(channel_access_token)
+        # Setup RichMenu to register
     quickm = QuickMenu(name="Quick Menu", chat_bar_text="test")
     quickm.add_area(0, 0, 1250, 843, "message", "テキストメッセージ")
     quickm.add_area(1250, 0, 1250, 843, "uri", "http://imoutobot.com")
@@ -94,7 +94,7 @@ def Yooka_quickmenu(RichMenu):
 
     # Check
     res = quickman.get_applied_menu(user_id)
-    """print(user_id  + ":" + res["richMenuId"])"""
+    print(user_id  + ":" + res["richMenuId"])
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
