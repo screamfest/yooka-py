@@ -193,8 +193,9 @@ def handle_message(event):
     elif(b=="more info about yooka"):
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text="Aku Yooka"),
-            TextSendMessage(text="Mahasiswa Teknik Informatika di Universitas Darma Persada"))
+            TextSendMessage(
+                text="Aku Yooka", 
+                text="Mahasiswa Teknik Informatika di Universitas Darma Persada"))
         line_bot_api.reply_message(    
             TextSendMessage(text="Untuk menambahkan teman bisa search id aku nih @oiw3246b, atau scan QR Code dibawah ini"),
             ImageSendMessage(
